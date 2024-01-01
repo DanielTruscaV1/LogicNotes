@@ -11,6 +11,8 @@
             console.log(error.message);
         })
     }
+
+    getNotes();
 </script>
 
 <template>
