@@ -27,8 +27,8 @@
     {
       position:absolute;
       top:15px;
-      left:20px;
       margin:0px;
+      width:100vw;
       text-align:left;
       font-size:30px;
       text-align:center;
