@@ -1,10 +1,16 @@
 <script setup>
     import axios from "axios";
 
-    axios.get("https://logicnotes.netlify.app/.netlify/function/getNotes")
-    .then(response => {
-        console.log(response.data);
-    })
+    function getNotes()
+    {
+        axios.get("https://logicnotes.netlify.app/.netlify/function/getNotes")
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
 </script>
 
 <template>
