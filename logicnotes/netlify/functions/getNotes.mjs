@@ -3,6 +3,18 @@ import faunadb from 'faunadb';
 const { Client, Paginate, Documents } = faunadb.query;
 
 exports.handler = async (event, context) => {
+  if (event.httpMethod === 'OPTIONS') {
+    // Handle preflight request
+    return {
+    statusCode: 200,
+    headers: {
+        'Access-Control-Allow-Origin': '*', // or your specific frontend URL
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, PATCH',
+        'Access-Control-Allow-Headers': 'Content-Type',
+    },
+    body: '',
+    };
+}
   try {
     const client = new Client({
       secret: process.env.VITE_FAUNADB_KEY,
@@ -15,12 +27,22 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       body: JSON.stringify(data),
+      headers: {
+        'Access-Control-Allow-Origin': '*', // or your specific frontend URL
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, PATCH',
+        'Access-Control-Allow-Headers': 'Content-Type',
+    },
     };
   } catch (error) {
     console.error('Error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Internal Server Error' }),
+      headers: {
+        'Access-Control-Allow-Origin': '*', // or your specific frontend URL
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, PATCH',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
     };
   }
 };

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.6.3",
+    "cors": "^2.8.5",
     "faunadb": "^4.8.0",
     "vue": "^3.2.36",
     "vue-router": "^4.2.5"
