@@ -31,5 +31,6 @@
       margin:0px;
       text-align:left;
       font-size:30px;
+      text-align:center;
     }
 </style>
