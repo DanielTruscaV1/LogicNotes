@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     statusCode: 200,
     headers: {
         'Access-Control-Allow-Origin': '*', // or your specific frontend URL
-        'Access-Control-Allow-Methods': 'OPTIONS, POST, PATCH',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS, POST, PATCH',
         'Access-Control-Allow-Headers': 'Content-Type',
     },
     body: '',
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(data),
       headers: {
         'Access-Control-Allow-Origin': '*', // or your specific frontend URL
-        'Access-Control-Allow-Methods': 'OPTIONS, POST, PATCH',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS, POST, PATCH',
         'Access-Control-Allow-Headers': 'Content-Type',
     },
     };
@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ error: 'Internal Server Error' }),
       headers: {
         'Access-Control-Allow-Origin': '*', // or your specific frontend URL
-        'Access-Control-Allow-Methods': 'OPTIONS, POST, PATCH',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS, POST, PATCH',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
     };
