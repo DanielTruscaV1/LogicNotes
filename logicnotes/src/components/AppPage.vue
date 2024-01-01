@@ -1,5 +1,12 @@
 <script setup>
+  import { useRouter } from 'vue-router';
 
+  const router = useRouter();
+
+  function notesRedirect()
+  {
+    router.push('/notes');
+  }
 </script>
 
 <template>
@@ -8,7 +15,7 @@
       Welcome to the LogicNotes project!
     </h1>
     <img src="../assets/Logo1.png"/>
-    <button>
+    <button @click="notesRedirect">
       See my notes
     </button>
   </main>
@@ -17,8 +24,7 @@
 <style scoped>
     main 
     {
-        position:absolute;
-        top:20vh;
+        position:relative;
         width:100vw;
         min-height:70vh;
         background-color:rgb(50, 30, 90);
@@ -28,6 +34,8 @@
     }
     h1 
     {
+      margin:0px;
+      padding-top:20px;
       font-size:20px;
       text-align:center;
     }

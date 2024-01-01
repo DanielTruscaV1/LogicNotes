@@ -13,8 +13,7 @@
 <style scoped>
     footer
     {
-        position:absolute;
-        top:90vh;
+        position:relative;
         width:100vw;
         height:10vh;
         background-color:rgb(40, 10, 70);

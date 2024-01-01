@@ -51,8 +51,7 @@
 <style scoped>
     nav 
     {
-      position:absolute;
-      top:10vh;
+      position:relative;
       left:0px;
       width:100vw;
       height:10vh;
@@ -63,6 +62,8 @@
     h1 
     {
       position:relative;
+      margin:0px;
+      padding-top:20px;
       text-align:center;
       z-index:3;
     }
