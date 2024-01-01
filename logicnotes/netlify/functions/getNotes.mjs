@@ -1,4 +1,5 @@
 import faunadb from 'faunadb';
+import cors from 'cors';
 
 const { Client, Paginate, Documents } = faunadb.query;
 
