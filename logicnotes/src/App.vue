@@ -1,13 +1,15 @@
 <script setup>
-    import Navigation from "./components/Navigation.vue";
-    import Page from "./components/Page.vue";
-    import Footer from "./components/Footer.vue";
+  import AppHeader from "./components/AppHeader.vue";
+  import AppNavigation from "./components/AppNavigation.vue";
+  import AppPage from "./components/AppPage.vue";
+  import AppFooter from "./components/AppFooter.vue";
 </script>
 
 <template>
-  <Navigation/>
-  <Page/>  
-  <Footer/>
+  <AppHeader/>
+  <AppNavigation/>
+  <AppPage/>  
+  <AppFooter/>
 </template>
 
 <style scoped>
