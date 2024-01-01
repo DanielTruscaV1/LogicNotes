@@ -49,7 +49,7 @@ exports.handler = async (event, context) => {
 
 // Enable CORS for the function
 const corsOptions = {
-  origin: 'http://localhost:5173', // Replace with the origin of your frontend application
+  origin: 'http://localhost:5173/notes', // Replace with the origin of your frontend application
   credentials: true,
 };
 
