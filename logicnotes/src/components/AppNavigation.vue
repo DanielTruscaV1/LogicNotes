@@ -64,7 +64,7 @@
     {
       position:relative;
       text-align:center;
-      z-index:2;
+      z-index:3;
     }
     ul 
     {
@@ -74,6 +74,7 @@
       margin:0px;
       padding:0px;
       height:50vh;
+      z-index:2;
     }
     li 
     {
