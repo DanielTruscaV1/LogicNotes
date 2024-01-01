@@ -46,3 +46,12 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
+// Enable CORS for the function
+const corsOptions = {
+  origin: 'http://localhost:5173', // Replace with the origin of your frontend application
+  credentials: true,
+};
+
+export const handlerWithCors = cors(corsOptions)(handler);
+export { handlerWithCors as handler };
