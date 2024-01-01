@@ -88,4 +88,29 @@
       font-size:20px;
       background-color:rgb(60, 30, 90);
     }
+    @media screen and (min-width: 600px)
+    {
+      h1 
+      {
+        display:inline-block;
+        left:30px;
+        margin-right:85px;
+        text-align:left;
+      }
+      ul 
+      {
+        display:inline-block !important;
+      }
+      li 
+      {
+        display:inline-block;
+        width:220px;
+        cursor:pointer;
+        background-color:transparent;
+      }
+      li:hover 
+      {
+        background-color:rgb(60, 30, 90);
+      }
+    }
 </style>

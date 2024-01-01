@@ -33,4 +33,12 @@
       font-size:30px;
       text-align:center;
     }
+    @media screen and (min-width: 600px)
+    {
+      h1 
+      {
+        left:30px;
+        text-align:left;
+      }
+    }
 </style>

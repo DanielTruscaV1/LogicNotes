@@ -61,4 +61,24 @@
       border-radius:20px;
       font-size:20px;
     }
+    @media screen and (min-width: 600px)
+    {
+      img
+      {
+        left:40vw;
+        width:20vw;
+        height:200px;
+      }
+      button 
+      {
+        top:15vh;
+        width:10vw;
+        cursor:pointer;
+      }
+      button:hover 
+      {
+        background-color:white;
+        color:black;
+      }
+    }
 </style>
