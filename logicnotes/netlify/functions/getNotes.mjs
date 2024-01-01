@@ -5,7 +5,7 @@ const { Client, Paginate, Documents } = faunadb.query;
 exports.handler = async (event, context) => {
   try {
     const client = new Client({
-      secret: process.env.FAUNADB_SECRET_KEY,
+      secret: process.env.VITE_FAUNADB_KEY,
     });
 
     const { data } = await client.query(
