@@ -6,6 +6,7 @@ import AppPage from "./components/AppPage.vue";
 import AppFooter from "./components/AppFooter.vue";
 
 import Notes from "./components/Notes.vue";
+import Note from "./components/Note.vue";
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/notes',
     component:Notes,
+  },
+  {
+    path: '/note',
+    component:Note,
   }
 ];
 

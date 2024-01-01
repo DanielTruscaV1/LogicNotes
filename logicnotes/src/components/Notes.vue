@@ -4,19 +4,15 @@
 
 <template>
     <section id="notes-container">
-        <br/>
         <section class="note-preview">
 
         </section>
-        <br/>
         <section class="note-preview">
 
         </section>
-        <br/>
         <section class="note-preview">
 
         </section>
-        <br/>
     </section>
 </template>
 
@@ -25,6 +21,7 @@
     {
         position:relative;
         width:100vw;
+        min-height:70vh;
         background-color:rgb(50, 30, 90);
         color:white;
         font-family: 'Montserrat', sans-serif;
@@ -39,5 +36,16 @@
         background-color:rgb(40, 10, 70);
         border-radius:30px;
         border:3px solid white;
+    }
+    @media screen and (min-width: 600px)
+    {
+      .note-preview
+      {
+        top:30px;
+        left:0px;
+        margin-left:2.5vw;
+        display:inline-block !important;
+        width:30vw !important;
+      }
     }
 </style>
