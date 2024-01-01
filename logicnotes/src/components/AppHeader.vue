@@ -21,6 +21,7 @@
       background-color:rgb(40, 10, 70);
       color:white;
       font-family: 'Montserrat', sans-serif;
+      z-index:2;
     }
     h1 
     {

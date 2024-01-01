@@ -1,13 +1,43 @@
 <script setup>
+  function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  import {ref} from "vue";
+
+  let navigationListDisplay = ref("none");
+
+  async function toggleNavigation()
+  {
+    if(navigationListDisplay.value == "none")
+    {
+      navigationListDisplay.value = "block";
+
+      let element = document.getElementsByTagName("ul")[0];
+      element.classList.add("slide-in-top");
+      await sleep(750);
+      element.classList.remove("slide-in-top");
+    }
+    else 
+    {
+      let element = document.getElementsByTagName("ul")[0];
+      element.classList.add("slide-in-bottom");
+      await sleep(750);
+      element.classList.remove("slide-in-bottom");
+      navigationListDisplay.value = "none";
+    }
+  }
 
 </script>
 
 <template>
   <nav>
-    <h1>
+    <h1 @click="toggleNavigation">
        Navigation 
     </h1>
-    <ul>
+    <ul 
+      :style="{display: navigationListDisplay}"
+    >
       <li>Home</li>
       <li>Notes</li>
       <li>Sign-in</li>
@@ -32,7 +62,9 @@
     }
     h1 
     {
+      position:relative;
       text-align:center;
+      z-index:2;
     }
     ul 
     {
