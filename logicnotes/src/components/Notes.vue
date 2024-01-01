@@ -3,7 +3,15 @@
 
     function getNotes()
     {
-        axios.get("https://logicnotes.netlify.app/.netlify/function/getNotes")
+        axios.get("https://logicnotes.netlify.app/.netlify/function/getNotes",
+            {
+                headers: 
+                {
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+        
         .then(response => {
             console.log(response.data);
         })
