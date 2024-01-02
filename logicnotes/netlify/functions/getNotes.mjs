@@ -1,16 +1,22 @@
 import faunadb from 'faunadb';
 
-const { Client, Paginate, Documents } = faunadb.query;
+const q = faunadb.query;
 
 export const handler = async () => {
 	try {
-    const client = new Client({
-      secret: process.env.VITE_FAUNADB_KEY,
-    });
+      const client = new faunadb.Client({
+        secret: process.env.VITE_FAUNADB_KEY,
+      });
 
-    const { data } = await client.query(
-      Documents(Paginate(Match(Index('allNotes'))))
-    );
+      const collection = q.Collection('Notes');
+      const index = 'allNotes';
+      
+      const query = q.Map(
+        q.Paginate(q.Match(q.Index(index))),
+        q.Lambda('ref', q.Get(q.Var('ref')))
+      );
+
+    const { data } = await client.query(query);
 
     return {
       statusCode: 200,
