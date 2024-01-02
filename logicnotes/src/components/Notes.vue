@@ -34,7 +34,16 @@
             class="note-preview"
             v-for="(note, index) in notes"
         >
-
+            <h1>
+                {{ note.data.title }}
+            </h1>
+            <p>
+                Author: {{ note.data.author }}
+            </p>
+            <p>
+                Date: {{ note.data.date }}
+            </p>
+            <img :src="note.data.image" :alt="note.data.image"/>
         </section>
     </section>
 </template>
@@ -55,10 +64,34 @@
         position:relative;
         left:10vw;
         width:80vw;
-        height:30vh;
+        height:50vh;
         background-color:rgb(40, 10, 70);
         border-radius:30px;
         border:3px solid white;
+        cursor:pointer;
+    }
+    h1 
+    {
+        position:relative;
+        top:20px;
+        margin:0px;
+        width:100%;
+        text-align:center;
+    }
+    p 
+    {
+        position:relative;
+        top:10px;
+        margin-left:30px;
+    }
+    img 
+    {
+        position:relative;
+        top:10px;
+        left:5%;
+        width:90%;
+        height:220px;
+        border-radius:30px;
     }
     @media screen and (min-width: 600px)
     {
