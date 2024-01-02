@@ -1,5 +1,10 @@
 `
 <section>
-
+    <h1>
+        About this project
+    </h1>
+    <p>
+        Hello everyone and welcome to the LogicNotes website. Here you can find my personal collection of technical notes for various subjects like Software Development, Artificial Intelligence and Competitive Programming.
+    </p>
 </section>
 `

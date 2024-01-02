@@ -1,5 +1,27 @@
 <script setup>
+    const id = "1";
 
+    function getNote()
+    {
+        axios.get(
+            `https://logicnotes.netlify.app/.netlify/functions/getNoteById?id=${id}`,
+            {
+                headers: 
+                {
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+        
+        .then(response => {
+            consolg.log(response.data);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
+
+    getNote();
 </script>
 
 <template>
