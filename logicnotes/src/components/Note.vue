@@ -56,19 +56,22 @@
 <style scoped>
    #note-container 
    {
+        display: flex;
+        position:relative;
         width:100vw;
-        height:70vh;
         background-color:rgb(50, 30, 90);
         color:white;
         font-family: 'Montserrat', sans-serif;
    }
    #card 
    {
+        display: flex;
+        flex-direction: column;
         position:relative;
         top:30px;
         left:20vw;
+        margin-bottom:30px;
         width:60vw;
-        min-height:60vh;
         background-color:rgb(60, 40, 100);
         border-radius:30px;
    }
@@ -83,7 +86,9 @@
    p 
    {
         position:relative;
-        top:20px;
+        top:50px;
+        margin-top:0px;
+        margin-bottom:30px;
         margin-left:30px;
    }
     img 
@@ -92,14 +97,17 @@
         top:30px;
         left:5%;
         width:40%;
+        height:250px;
         border-radius:30px;
     }
     #content 
     {
-        display:inline-block;
-        position:absolute;
+        position:relative;
+        top:-250px;
+        left:50%;
+        margin-bottom:30px;
         width:45%;
-        right:5%;
+        
     }
    @media screen and (max-width: 600px)
     {
@@ -115,7 +123,8 @@
         #content 
         {
             display:block;
-            margin-top:30px;
+            left:5%;
+            margin-top:280px;
             width:90%;
         }
     }
