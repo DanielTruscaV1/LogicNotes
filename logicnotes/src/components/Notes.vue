@@ -78,6 +78,7 @@
         border-radius:30px;
         border:3px solid white;
         cursor:pointer;
+        z-index:2;
     }
     h1 
     {
@@ -101,6 +102,7 @@
         width:90%;
         height:220px;
         border-radius:30px;
+        z-index:3;
     }
     @media screen and (min-width: 600px)
     {

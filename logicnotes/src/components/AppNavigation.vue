@@ -100,6 +100,7 @@
       ul 
       {
         display:inline-block !important;
+        max-height:60px !important;
       }
       li 
       {
