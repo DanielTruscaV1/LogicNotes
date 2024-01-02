@@ -3,7 +3,8 @@
 
     function getNotes()
     {
-        axios.get("https://logicnotes.netlify.app/.netlify/function/getNotes",
+        axios.get(
+            "https://logicnotes.netlify.app/.netlify/functions/getNotes",
             {
                 headers: 
                 {
