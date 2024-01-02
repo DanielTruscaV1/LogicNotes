@@ -3,7 +3,13 @@ export const handler = async () => {
 		statusCode: 200,
 		body: JSON.stringify({
 			message: 'This is what will be returned!'
-		})
+		}),
+    headers: {
+      /* Required for CORS support to work */
+      'Access-Control-Allow-Origin': '*',
+      /* Required for cookies, authorization headers with HTTPS */
+      'Access-Control-Allow-Credentials': true
+    },
 	}
 }
 /*
