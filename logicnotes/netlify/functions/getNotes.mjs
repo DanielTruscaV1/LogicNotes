@@ -1,3 +1,12 @@
+export const handler = async () => {
+	return {
+		statusCode: 200,
+		body: JSON.stringify({
+			message: 'This is what will be returned!'
+		})
+	}
+}
+/*
 import faunadb from 'faunadb';
 import cors from 'cors';
 
@@ -56,3 +65,4 @@ const corsOptions = {
 
 export const handlerWithCors = cors(corsOptions)(handler);
 export { handlerWithCors as handler };
+*/
