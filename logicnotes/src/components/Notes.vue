@@ -1,4 +1,8 @@
 <script setup>
+    import {ref} from "vue";
+
+    const notes = ref(null);
+
     import axios from "axios";
 
     function getNotes()
@@ -14,7 +18,7 @@
         )
         
         .then(response => {
-            console.log(response.data);
+            notes.value = response.data;
         })
         .catch(error => {
             console.log(error.message);
@@ -26,13 +30,10 @@
 
 <template>
     <section id="notes-container">
-        <section class="note-preview">
-
-        </section>
-        <section class="note-preview">
-
-        </section>
-        <section class="note-preview">
+        <section 
+            class="note-preview"
+            v-for="(note, index) in notes"
+        >
 
         </section>
     </section>
