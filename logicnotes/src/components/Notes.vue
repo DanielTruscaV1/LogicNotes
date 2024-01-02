@@ -1,4 +1,8 @@
 <script setup>
+    import { useRouter } from 'vue-router';
+
+    const router = useRouter();
+
     import {ref} from "vue";
 
     const notes = ref(null);
@@ -26,6 +30,11 @@
     }
 
     getNotes();
+
+    function noteRedirect()
+    {
+        router.push('/note');
+    }
 </script>
 
 <template>
@@ -43,7 +52,7 @@
             <p>
                 Date: {{ note.data.date }}
             </p>
-            <img :src="note.data.image" :alt="note.data.image"/>
+            <img @click="noteRedirect" :src="note.data.image" :alt="note.data.image"/>
         </section>
     </section>
 </template>
