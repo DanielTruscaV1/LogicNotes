@@ -1,4 +1,8 @@
 <script setup>
+    import {ref} from "vue";
+
+    const note = ref(null);
+
     import axios from "axios";
 
     const id = "1";
@@ -16,7 +20,7 @@
         )
         
         .then(response => {
-            consolg.log(response.data);
+            note.value = response.data;
         })
         .catch(error => {
             console.log(error.message);
@@ -30,14 +34,21 @@
     <section id="note-container">
         <section id="card">
             <h1>
-                Title-
+                {{ note.title }}
             </h1>
-            <h1>
-                Author-
-            </h1>
-            <h1>
-                Date-
-            </h1>
+            <p>
+                Author: {{ note.author }}
+            </p>
+            <p>
+                Date: {{ note.date }}
+            </p>
+            <img :src="note.image"/>
+            <div 
+                id="content"
+                v-html="note.content"
+            >
+
+            </div>
         </section>
     </section>
 </template>
@@ -57,7 +68,7 @@
         top:30px;
         left:20vw;
         width:60vw;
-        height:60vh;
+        min-height:60vh;
         background-color:rgb(60, 40, 100);
         border-radius:30px;
    }
@@ -65,16 +76,47 @@
    {
         position:relative;
         top:30px;
-        left:30px;
         margin:0px;
-        text-align:left;
+        text-align:center;
+        font-size:22px;
    }
+   p 
+   {
+        position:relative;
+        top:20px;
+        margin-left:30px;
+   }
+    img 
+    {
+        position:relative;
+        top:30px;
+        left:5%;
+        width:40%;
+        border-radius:30px;
+    }
+    #content 
+    {
+        display:inline-block;
+        position:absolute;
+        width:45%;
+        right:5%;
+    }
    @media screen and (max-width: 600px)
     {
         #card 
         {
             left:2.5vw;
             width:95vw;
+        }
+        img 
+        {
+            width:90%;
+        }
+        #content 
+        {
+            display:block;
+            margin-top:30px;
+            width:90%;
         }
     }
 </style>
