@@ -9,7 +9,7 @@ export const handler = async () => {
       });
 
       const collection = q.Collection('Notes');
-      const index = 'allNotes';
+      const index = 'getAllNotes';
       
       const query = q.Map(
         q.Paginate(q.Match(q.Index(index))),
