@@ -1,16 +1,40 @@
+import faunadb from 'faunadb';
+
+const { Client, Paginate, Documents } = faunadb.query;
+
 export const handler = async () => {
-	return {
-		statusCode: 200,
-		body: JSON.stringify({
-			message: 'This is what will be returned!'
-		}),
-    headers: {
-      /* Required for CORS support to work */
-      'Access-Control-Allow-Origin': '*',
-      /* Required for cookies, authorization headers with HTTPS */
-      'Access-Control-Allow-Credentials': true
-    },
-	}
+	try {
+    const client = new Client({
+      secret: process.env.VITE_FAUNADB_KEY,
+    });
+
+    const { data } = await client.query(
+      Documents(Paginate(Match(Index('allNotes'))))
+    );
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(data),
+      headers: {
+        /* Required for CORS support to work */
+        'Access-Control-Allow-Origin': '*',
+        /* Required for cookies, authorization headers with HTTPS */
+        'Access-Control-Allow-Credentials': true
+      },
+    };
+  } catch (error) {
+    console.error('Error:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Internal Server Error' }),
+      headers: {
+        /* Required for CORS support to work */
+        'Access-Control-Allow-Origin': '*',
+        /* Required for cookies, authorization headers with HTTPS */
+        'Access-Control-Allow-Credentials': true
+      },
+    };
+  }
 }
 /*
 import faunadb from 'faunadb';
