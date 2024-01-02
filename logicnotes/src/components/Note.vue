@@ -1,4 +1,6 @@
 <script setup>
+    import axios from "axios";
+
     const id = "1";
 
     function getNote()

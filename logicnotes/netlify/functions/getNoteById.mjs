@@ -11,7 +11,7 @@ export const handler = async (event, context) => {
       });
 
       const collection = q.Collection('Notes');
-      const index = 'getAllNotes';
+      const index = 'getNoteById';
       
       const query = q.Get(
         q.Match(q.Index(index), id)
