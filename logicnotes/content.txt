@@ -1,10 +1,108 @@
 `
 <section>
     <h1>
-        About this project
+        Analysis of Algorithms
     </h1>
+    <h2>
+        What is the Analysis of Algorithms?
+    </h2>
     <p>
-        Hello everyone and welcome to the LogicNotes website. Here you can find my personal collection of technical notes for various subjects like Software Development, Artificial Intelligence and Competitive Programming.
+        The analysis of algorithms is a field in computer science that involves the study and evaluation of algorithms in terms of their efficiency and performance. The primary goal is to understand how an algorithm behaves and performs in different situations, such as when dealing with large datasets, varying input sizes, or specific constraints. The analysis of algorithms helps in making informed decisions about the choice of algorithms for solving specific computational problems.
+    </p>
+    <h2>
+        The content of this note
+    </h2>
+    <p>
+        In this note we are going to take look at some key aspects of algorithm analysis like:
+        1. Time Complexity
+        2. Space Complexity
+        3. Big O Notation
+        4. Best, Average, and Worst-case Analysis
+        5. Asymptotic Analysis
+        6. Amortized Analysis
+        7. Empirical Analysis
+    </p>
+    <h2>
+        1. Time Complexity
+    </h2>
+    <p>
+        Time complexity measures the amount of time an algorithm takes to complete as a function of the input size. It helps in understanding how the running time of an algorithm scales with the size of the input. Commonly expressed using big O notation, it provides an upper bound on the growth rate of an algorithm's running time.
+    </p>
+    <h2>
+        2. Space Complexity
+    </h2>
+    <p>
+        Space complexity measures the amount of memory an algorithm uses as a function of the input size. Similar to time complexity, space complexity is expressed using big O notation. It helps in analyzing how the memory requirements of an algorithm grow with the size of the input.
+    </p>
+    <h2>
+        3. Big O Notation
+    </h2>
+    <p>
+        There are many classes of time complexity that can be represented using the big O notation.
+        Here are some of the most commonly used of them:
+    </p>
+    <ul>
+        <li>
+            O(1) -> constant time
+        </li>
+        <li>
+            O(log n) -> logarithmic time
+        </li>
+        <li>
+            O(n) -> linear time
+        </li>
+        <li>
+            O(n log n) -> linearithmic time
+        </li>
+        <li>
+            O(n^2) -> quadratic time
+        </li>
+        <li>
+            O(2^n) -> exponential time
+        </li>
+    </ul>
+    <p>
+        What is important to note is that algorithms with lower time complexity are generally more efficient.
+    </p>
+    <p>
+        Another important aspect is that when analyzing time complexity, focus is often on the dominant term or the term with the highest growth rate.
+        Constants and lower-order terms are usually ignored in big O notation since they have a lesser impact on the overall growth rate.
+    </p>
+    <h2>
+        4. Best, Average, and Worst-case Analysis
+    </h2>
+    <p>
+        Algorithms may behave differently based on the characteristics of the input data. Best-case analysis considers the scenario where the algorithm performs optimally, while worst-case analysis considers the scenario where the algorithm performs the least efficiently. Average-case analysis takes into account the average performance over all possible inputs.
+    </p>
+    <p>
+        The choice between best, average, and worst-case analysis depends on the specific characteristics of the algorithm and the requirements of the application.
+    </p>
+    <p>
+        Algorithms are often designed to strike a balance between best, average, and worst-case scenarios. Some algorithms may excel in worst-case scenarios at the expense of average-case performance, and vice versa.
+    </p>
+    <h2>
+        5. Asymptotic Analysis
+    </h2>
+    <p>
+        Asymptotic analysis focuses on the behavior of an algorithm as the input size approaches infinity. It disregards constant factors and lower-order terms, providing a high-level understanding of how an algorithm scales.
+    </p>
+    <h2>
+        6. Amortized Analysis
+    </h2>
+    <p>
+        Asymptotic analysis focuses on the behavior of an algorithm as the input size approaches infinity. It disregards constant factors and lower-order terms, providing a high-level understanding of how an algorithm scales.
+    </p>
+    <h2>
+        7. Empirical Analysis
+    </h2>
+    <p>
+        Empirical analysis involves practical experimentation and measurement of an algorithm's performance on real-world inputs. This is often done using profiling tools and benchmarks.
+    </p>
+    <h2>
+        Conclusion 
+    </h2>
+    <p>
+        The analysis of algorithms is crucial for designing efficient algorithms, selecting appropriate algorithms for specific tasks, and optimizing existing algorithms. It plays a vital role in the field of algorithm design and contributes to advancements in computational efficiency and problem-solving capabilities.
     </p>
 </section>
 `

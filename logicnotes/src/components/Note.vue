@@ -5,12 +5,12 @@
 
     import axios from "axios";
 
-    const id = "1";
+    const props = defineProps(['id']);
 
     function getNote()
     {
         axios.get(
-            `https://logicnotes.netlify.app/.netlify/functions/getNoteById?id=${id}`,
+            `https://logicnotes.netlify.app/.netlify/functions/getNoteById?id=${props.id}`,
             {
                 headers: 
                 {
@@ -103,10 +103,10 @@
     #content 
     {
         position:relative;
-        top:-250px;
-        left:50%;
+        top:30px;
+        left:5%;
         margin-bottom:30px;
-        width:45%;
+        width:75%;
         
     }
    @media screen and (max-width: 600px)

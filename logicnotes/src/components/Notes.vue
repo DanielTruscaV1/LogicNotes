@@ -31,9 +31,13 @@
 
     getNotes();
 
-    function noteRedirect()
+    function noteRedirect(index)
     {
-        router.push('/note');
+        const id = index;
+        router.push({
+            name: 'Note',
+            params: {id},
+        });
     }
 </script>
 
@@ -52,7 +56,7 @@
             <p>
                 Date: {{ note.data.date }}
             </p>
-            <img @click="noteRedirect" :src="note.data.image" :alt="note.data.image"/>
+            <img @click="noteRedirect(index+1)" :src="note.data.image" :alt="note.data.image"/>
         </section>
     </section>
 </template>

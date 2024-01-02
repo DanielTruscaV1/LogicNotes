@@ -18,8 +18,10 @@ const routes = [
     component:Notes,
   },
   {
-    path: '/note',
+    path: '/note/:id',
+    name: "Note",
     component:Note,
+    props: true,
   }
 ];
 
