@@ -2,10 +2,13 @@
     import {ref} from "vue";
 
     const note = ref(null);
+    const content = ref(null);
 
     import axios from "axios";
 
     const props = defineProps(['id']);
+
+    import DOMPurify from "dompurify";
 
     function getNote()
     {
@@ -21,6 +24,20 @@
         
         .then(response => {
             note.value = response.data;
+            content.value = note.value.content
+                .replace(/<code.*?>(.*?)<\/code>/gs, function(match, p1) {
+                    const formattedCode = p1.replace(/</g, '&lt;');
+
+                    // Adjust characters per line based on screen width
+                    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                    const charactersPerLine = screenWidth >= 600 ? 300 : 45; // Adjust as needed
+
+                    const lines = [];
+                    for (let i = 0; i < formattedCode.length; i += charactersPerLine) {
+                        lines.push(formattedCode.substr(i, charactersPerLine));
+                    }
+                    return `<code>${lines.join('\n')}</code>`;
+                });
         })
         .catch(error => {
             console.log(error.message);
@@ -45,10 +62,20 @@
             <img :src="note.image"/>
             <div 
                 id="content"
-                v-html="note.content"
+                v-html="DOMPurify.sanitize(content)"
             >
 
             </div>
+        </section>
+        
+        <section id="tags-container">
+            <p 
+                v-for="(tag, index) in note.tags.split(' ')"
+                class="tag"
+            >
+                {{ tag }}
+            </p>
+            <br/>
         </section>
     </section>
 </template>
@@ -56,7 +83,6 @@
 <style scoped>
    #note-container 
    {
-        display: flex;
         position:relative;
         width:100vw;
         background-color:rgb(50, 30, 90);
@@ -70,7 +96,6 @@
         position:relative;
         top:30px;
         left:20vw;
-        margin-bottom:30px;
         width:60vw;
         background-color:rgb(60, 40, 100);
         border-radius:30px;
@@ -81,7 +106,7 @@
         top:30px;
         margin:0px;
         text-align:center;
-        font-size:25px;
+        font-size:35px;
    }
    p 
    {
@@ -91,6 +116,7 @@
         margin-bottom:30px;
         margin-left:30px;
    }
+   
     img 
     {
         position:relative;
@@ -109,8 +135,36 @@
         width:75%;
         
     }
+    .tag 
+    {
+        display:inline-block;
+        padding:10px;
+        height:20px;
+        border:3px solid white;
+        border-radius:20px;
+
+    }
+    #tags-container 
+    {
+        position:absolute;
+        top:0px;
+        right:0px;
+        width:300px;
+        height:auto;
+    }
+    .tag:hover 
+    {
+        cursor:pointer;
+        background-color:white;
+        color:black;
+    }
    @media screen and (max-width: 600px)
     {
+        #note-container 
+        {
+            width:100vw;
+            overflow-x:hidden;
+        }
         #card 
         {
             left:2.5vw;
@@ -124,8 +178,15 @@
         {
             display:block;
             left:5%;
-            margin-top:280px;
+            margin-top:50px;
             width:90%;
+        }
+        #tags-container
+        {
+            display:block;
+            position:relative;
+            width:100vw;
+            height:400px;
         }
     }
 </style>
