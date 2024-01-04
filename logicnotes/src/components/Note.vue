@@ -64,8 +64,8 @@
                 id="content"
                 v-html="DOMPurify.sanitize(content)"
             >
-
             </div>
+            <br/>
         </section>
         
         <section id="tags-container">

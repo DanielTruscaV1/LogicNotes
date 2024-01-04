@@ -112,5 +112,20 @@ int main() {
 }
 </code>
 </pre>
+<h1>
+Complexity Analysis
+</h1>
+<p>
+Building a BIT from an array of 'n' elements  involves updating log(n) nodes for each of the n elements in the original array. This is because each node corresponds to a different level in the Binary Indexed Tree, and there are log(n) levels. Therefore, the overall time complexity of constructing a Binary Indexed Tree is O(n log n).
+</p>
+<p>
+Querying the cumulative sum of elements up to a given index can be done in O(log n) time. This efficiency is achieved by traversing the tree from the leaf to the root, with each step involving nodes at a different level.
+</p>
+<p>
+Updating a single element in the array and subsequently updating the corresponding nodes in the Binary Indexed Tree also takes O(log n) time. This is because the update operation involves adjusting the cumulative sums along the path from the leaf to the root.
+</p>
+<p>
+The space complexity of a Binary Indexed Tree is O(n), where n is the number of elements in the input array.
+</p>
 </section>
 `
