@@ -58,15 +58,19 @@
             </p>
             <img @click="noteRedirect(index+1)" :src="note.data.image" :alt="note.data.image"/>
         </section>
+        <br/>
+        <br/>
+        <br/>
     </section>
 </template>
 
 <style scoped>
     #notes-container 
     {
-        position:relative;
+        position:flex;
         width:100vw;
-        min-height:70vh;
+        min-height: 50vh;
+        flex-direction: column;
         background-color:rgb(50, 30, 90);
         color:white;
         font-family: 'Montserrat', sans-serif;

@@ -127,5 +127,85 @@ Updating a single element in the array and subsequently updating the correspondi
 <p>
 The space complexity of a Binary Indexed Tree is O(n), where n is the number of elements in the input array.
 </p>
+<h1>
+2D Binary Indexed Trees
+</h1>
+<p>
+Two-dimensional Binary Indexed Trees (2D BIT or Fenwick Trees) extend the concept of Binary Indexed Trees to efficiently handle cumulative sum queries in two dimensions. They are particularly useful in scenarios where you need to perform range queries and updates on a two-dimensional array.
+</p>
+<h1>
+Structure
+</h1>
+<p>
+A 2D Binary Indexed Tree is essentially a 2D array where each element at coordinates (i,j) corresponds to the prefix sum of the elements in the subrectangle defined by the top-left corner (1,1) and the bottom-right corrner (i,j) of the original array.
+(The indexing is 1-based for both rows and columns).
+</p>
+<h1>
+Implementation
+</h1>
+<pre>
+<code>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class FenwickTree2D {
+private:
+    vector<vector<int>> BIT; // Binary Indexed Tree
+    int rows, cols;
+
+public:
+    FenwickTree2D(int n, int m) {
+        rows = n;
+        cols = m;
+        BIT.assign(n + 1, vector<int>(m + 1, 0));
+    }
+
+    void update(int x, int y, int val) {
+        for (int i = x; i <= rows; i += i & -i) {
+            for (int j = y; j <= cols; j += j & -j) {
+                BIT[i][j] += val;
+            }
+        }
+    }
+
+    int query(int x, int y) {
+        int sum = 0;
+        for (int i = x; i > 0; i -= i & -i) {
+            for (int j = y; j > 0; j -= j & -j) {
+                sum += BIT[i][j];
+            }
+        }
+        return sum;
+    }
+
+    int queryRange(int x1, int y1, int x2, int y2) {
+        return query(x2, y2) - query(x1 - 1, y2) - query(x2, y1 - 1) + query(x1 - 1, y1 - 1);
+    }
+};
+
+int main() {
+    // Example usage:
+    int n = 5; // Number of rows
+    int m = 6; // Number of columns
+
+    FenwickTree2D fenwickTree(n, m);
+
+    // Update individual elements
+    fenwickTree.update(2, 3, 5);
+    fenwickTree.update(4, 5, 3);
+
+    // Query the sum in a rectangle
+    int result = fenwickTree.queryRange(2, 2, 4, 4);
+    cout << "Sum in the rectangle: " << result << endl;
+
+    return 0;
+}
+</code>
+</pre>
+<p>
+This code provides a basic framework for a 2D Binary Indexed Tree. You can adapt it according to your specific needs and integrate it into your algorithms that require efficient range queries and updates in a two-dimensional array.
+</p>
 </section>
 `
