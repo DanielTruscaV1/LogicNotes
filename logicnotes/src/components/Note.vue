@@ -58,9 +58,6 @@
                 <li
                     v-for="(title, index) in titles"
                 >  
-                <strong>
-                    {{ index }}.
-                </strong> 
                 <div v-html="title">
 
                 </div>
@@ -101,7 +98,9 @@
 <style scoped>
     ul 
     {
+        padding-left:30px;
         position:absolute;
+        width:17vw;
         top:30px;
         margin:0px;
         list-style-type:none;
@@ -113,7 +112,15 @@
     }
     li
     {
-        font-size:18px;
+        margin-bottom:20px;
+        font-size:14px;
+        cursor:pointer;
+        border-left:3px solid white;
+    }
+    li:hover 
+    {
+        background-color:white;
+        color:black;
     }
    #note-container 
    {
