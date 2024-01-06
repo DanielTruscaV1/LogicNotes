@@ -3,6 +3,7 @@
 
     const note = ref(null);
     const content = ref(null);
+    const titles = ref(null);
 
     import axios from "axios";
 
@@ -24,6 +25,9 @@
         
         .then(response => {
             note.value = response.data;
+            const regex = /<h1>(.+?)<\/h1>/gs;
+            const matches = note.value.content.match(regex);
+            titles.value = matches;
             content.value = note.value.content
                 .replace(/<code.*?>(.*?)<\/code>/gs, function(match, p1) {
                     const formattedCode = p1.replace(/</g, '&lt;');
@@ -49,6 +53,20 @@
 
 <template>
     <section id="note-container">
+        <section id="jump-to">
+            <ul>
+                <li
+                    v-for="(title, index) in titles"
+                >  
+                <strong>
+                    {{ index }}.
+                </strong> 
+                <div v-html="title">
+
+                </div>
+                </li>
+            </ul>
+        </section>
         <section id="card">
             <h1>
                 {{ note.title }}
@@ -73,7 +91,7 @@
                 v-for="(tag, index) in note.tags.split(' ')"
                 class="tag"
             >
-                {{ tag }}
+                 {{ tag }}
             </p>
             <br/>
         </section>
@@ -81,6 +99,22 @@
 </template>
 
 <style scoped>
+    ul 
+    {
+        position:absolute;
+        top:30px;
+        margin:0px;
+        list-style-type:none;
+    }
+    div 
+    {
+        display:inline-block;
+        margin-left:10px;    
+    }
+    li
+    {
+        font-size:18px;
+    }
    #note-container 
    {
         position:relative;
