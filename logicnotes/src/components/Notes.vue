@@ -67,10 +67,11 @@
 <style scoped>
     #notes-container 
     {
-        position:flex;
+        display:inline-flex;
         width:100vw;
         min-height: 50vh;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         background-color:rgb(50, 30, 90);
         color:white;
         font-family: 'Montserrat', sans-serif;
@@ -79,9 +80,12 @@
     .note-preview
     {
         position:relative;
-        left:10vw;
+        display:inline-flex;
+        flex-direction:column;
+        left:7.5vw;
         width:80vw;
-        height:50vh;
+        min-height:50vh;
+        margin-bottom:30px;
         background-color:rgb(40, 10, 70);
         border-radius:30px;
         border:3px solid white;
@@ -107,6 +111,7 @@
         position:relative;
         top:10px;
         left:5%;
+        margin-bottom:30px;
         width:90%;
         height:220px;
         border-radius:30px;
@@ -119,8 +124,9 @@
         top:30px;
         left:0px;
         margin-left:2.5vw;
+        margin-bottom:30px;
         display:inline-block !important;
-        width:30vw !important;
+        width:29vw !important;
       }
     }
 </style>

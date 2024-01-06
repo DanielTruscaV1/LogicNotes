@@ -1,211 +1,112 @@
 `
 <section>
-    <h1>
-        Binary Indexed Trees (Fenwick Trees)
-    </h1>
 <h1>
-What are binary indexed trees?
+Context
 </h1>
 <p>
-Binary Indexed Trees (BIT), also known as Fenwick Trees, are a data structure that efficiently maintains an array of cumulative sums, allowing for fast updates and queries of prefix sums. They were introduced by Peter Fenwick in 1994. BITs are particularly useful in scenarios where you need to perform frequent updates and queries on cumulative sums, such as finding the sum of elements in a range of an array.
-</p>
-<p>
-The key idea behind a Binary Indexed Tree is to represent the array as a tree structure, where each node stores the cumulative sum of a specific range of elements. The low-order bits of the indices are used to determine the ranges represented by the nodes in the tree. Specifically, the binary representation of the index is used to determine the parent-child relationships in the tree.
+In the context of Computer Science problems there are many applications for Binary Indexed Trees.
+In this note you can find some of the most important and representative problems based on Binary Indexed Trees.
 </p>
 <h1>
-Construction
+Overview
 </h1>
 <p>
-    The construction of a BIT data structure involves 3 essential steps:
+This note presents efficient solutions for the following problems:
 </p>
 <ul>
 <li>
-    1. The BIT is usually represented as an array 'BIT[]' that has exactly the same size as the original array.
-</li>
-<li>
-    2. The BIT array is then initialized with zeros.
-</li>
-<li>
-    3. The BIT array is then updated to store cumulative sums based on the input array.
+Range Sum Query
 </li>
 </ul>
-<p>
-    Note: The update operation mentioned at step 3 is further explained below.
-</p>
 <h1>
-Update Operation
+Range Sum Query
 </h1>
 <p>
-    To update an element at index 'i' in the original array, traverse the BIT tree and update all nodes that cover the range of the element.
+<strong>
+Statement:
+</strong>
+Given an array arr of size n, the task is to efficiently answer multiple queries of the form "Find the sum of elements in the subarray arr[i, j]."
 </p>
 <p>
-    The update is done by adding the change in value to each affected node.
+<strong>
+Example:
+</strong>
+Suppose the input array is: arr = [3, 1, 4, 2, 2, 1, 5, 9, 6].
 </p>
-<h1>
-Query Operation
-</h1>
 <p>
-To calculate the prefix sum up to index i in the original array, traverse the BIT tree and accumulate the values of nodes covering the range of the prefix sum.
+And the input queries are: arr[2, 5], arr[1, 8], arr[4, 6]. 
+</p>
+<p>
+Then, the expected output of the program must be: 9, 33, 8.
+</p>
+<p>
+<strong>
+Solution:
+</strong>
+You can use a Binary Indexed Tree (BIT) to preprocess the array and efficiently answer the range sum queries. The BIT allows you to update elements and calculate the cumulative sum up to a given index in logarithmic time.
 </p>
 <h1>
 Implementation
 </h1>
 <pre>
 <code>
-#include <iostream>
-#include <vector>
+#include < iostream >
+#include < vector >
 using namespace std;
 
-void update(vector<int>& BIT, int i, int delta)
+class FenwickTree{
+    private:
+        vector< int > BIT;
+    public: 
+        FenwickTree(int n)
+        {
+            BIT.assign(n+1, 0);
+        }
+
+        void update(int index, int value)
+        {
+            while(index < BIT.size())
+            {
+                BIT[index] += val;
+                index += index & -index;
+            }
+        }
+
+        int query(int index)
+        {
+            int sum = 0;
+            while(index > 0)
+            {
+                sum += BIT[index];
+                index -= index & -index;
+            }
+            return sum;
+        }
+
+        int queryRange(int left, int right) {
+            return query(right) - query(left - 1);
+        }
+}
+
+int main()
 {
-    while(i < BIT.size())
-    {
-        BIT[i] += delta;
-        i += i & -i;
-    }
-}
+    vector< int > arr = {3, 1, 4, 2, 2, 1, 5, 9, 6};
+    int n = arr.size();
+    FenwickTree bit(n);
 
-int query(const vector<int>& BIT, int i) {
-    int result = 0;
-    while (i > 0) {
-        result += BIT[i];
-        i -= i & -i;
-    }
-    return result;
-}
-
-vector<int> construct_BIT(const vector<int>& array) {
-    int n = array.size();
-    vector<int> BIT(n + 1, 0);
-
-    for (int i = 1; i <= n; ++i) {
-        update(BIT, i, array[i - 1]);
-    }
-
-    return BIT;
-}
-
-int main() {
-    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    vector<int> BIT_tree = construct_BIT(arr);
-
-    update(BIT_tree, 3, 5);
-
-    int prefix_sum_5 = query(BIT_tree, 5);
-
-    cout << "Updated Array: ";
-    for (int num : arr) {
-        cout << num << " ";
-    }
-    cout << endl;
-
-    cout << "BIT Tree: ";
-    for (int num : BIT_tree) {
-        cout << num << " ";
-    }
-    cout << endl;
-
-    cout << "Prefix Sum up to Index 5: " << prefix_sum_5 << endl;
-
-    return 0;
-}
-</code>
-</pre>
-<h1>
-Complexity Analysis
-</h1>
-<p>
-Building a BIT from an array of 'n' elements  involves updating log(n) nodes for each of the n elements in the original array. This is because each node corresponds to a different level in the Binary Indexed Tree, and there are log(n) levels. Therefore, the overall time complexity of constructing a Binary Indexed Tree is O(n log n).
-</p>
-<p>
-Querying the cumulative sum of elements up to a given index can be done in O(log n) time. This efficiency is achieved by traversing the tree from the leaf to the root, with each step involving nodes at a different level.
-</p>
-<p>
-Updating a single element in the array and subsequently updating the corresponding nodes in the Binary Indexed Tree also takes O(log n) time. This is because the update operation involves adjusting the cumulative sums along the path from the leaf to the root.
-</p>
-<p>
-The space complexity of a Binary Indexed Tree is O(n), where n is the number of elements in the input array.
-</p>
-<h1>
-2D Binary Indexed Trees
-</h1>
-<p>
-Two-dimensional Binary Indexed Trees (2D BIT or Fenwick Trees) extend the concept of Binary Indexed Trees to efficiently handle cumulative sum queries in two dimensions. They are particularly useful in scenarios where you need to perform range queries and updates on a two-dimensional array.
-</p>
-<h1>
-Structure
-</h1>
-<p>
-A 2D Binary Indexed Tree is essentially a 2D array where each element at coordinates (i,j) corresponds to the prefix sum of the elements in the subrectangle defined by the top-left corner (1,1) and the bottom-right corrner (i,j) of the original array.
-(The indexing is 1-based for both rows and columns).
-</p>
-<h1>
-Implementation
-</h1>
-<pre>
-<code>
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-class FenwickTree2D {
-private:
-    vector<vector<int>> BIT; // Binary Indexed Tree
-    int rows, cols;
-
-public:
-    FenwickTree2D(int n, int m) {
-        rows = n;
-        cols = m;
-        BIT.assign(n + 1, vector<int>(m + 1, 0));
-    }
-
-    void update(int x, int y, int val) {
-        for (int i = x; i <= rows; i += i & -i) {
-            for (int j = y; j <= cols; j += j & -j) {
-                BIT[i][j] += val;
-            }
-        }
-    }
-
-    int query(int x, int y) {
-        int sum = 0;
-        for (int i = x; i > 0; i -= i & -i) {
-            for (int j = y; j > 0; j -= j & -j) {
-                sum += BIT[i][j];
-            }
-        }
-        return sum;
-    }
-
-    int queryRange(int x1, int y1, int x2, int y2) {
-        return query(x2, y2) - query(x1 - 1, y2) - query(x2, y1 - 1) + query(x1 - 1, y1 - 1);
-    }
-};
-
-int main() {
-    // Example usage:
-    int n = 5; // Number of rows
-    int m = 6; // Number of columns
-
-    FenwickTree2D fenwickTree(n, m);
-
-    // Update individual elements
-    fenwickTree.update(2, 3, 5);
-    fenwickTree.update(4, 5, 3);
-
-    // Query the sum in a rectangle
-    int result = fenwickTree.queryRange(2, 2, 4, 4);
-    cout << "Sum in the rectangle: " << result << endl;
+    for(int i = 0;i < n;i++)
+        bit.update(i+1, arr[i]);
+    
+    cout << "Sum in the subarray [2, 5]: " << bit.queryRange(2, 5) << '\n';
+    cout << "Sum in the subarray [1, 8]: " << bit.queryRange(1, 8) << '\n';
+    cout << "Sum in the subarray [4, 6]: " << bit.queryRange(4, 6) << '\n';
 
     return 0;
 }
 </code>
 </pre>
 <p>
-This code provides a basic framework for a 2D Binary Indexed Tree. You can adapt it according to your specific needs and integrate it into your algorithms that require efficient range queries and updates in a two-dimensional array.
+Note: 'index += index & -index' increments the index to the next node in the tree. The expression index & -index extracts the rightmost set bit of the index, effectively isolating the lowest significant bit. This operation efficiently navigates the tree structure by moving from one node to the next in logarithmic time.
 </p>
 </section>
 `
