@@ -115,6 +115,7 @@
         margin-top:0px;
         margin-bottom:30px;
         margin-left:30px;
+        line-height:1.75;
    }
    
     img 
