@@ -143,7 +143,7 @@
         height:20px;
         border:3px solid white;
         border-radius:20px;
-
+        line-height:1;
     }
     #tags-container 
     {
