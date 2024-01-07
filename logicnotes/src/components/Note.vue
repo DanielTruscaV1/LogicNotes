@@ -49,6 +49,11 @@
     }
 
     getNote();
+
+    function scrollUp()
+    {
+        window.scrollTo(0, 0);
+    }
 </script>
 
 <template>
@@ -93,7 +98,7 @@
             <br/>
         </section>
     </section>
-    <button>
+    <button @click="scrollUp">
         <i class="material-icons" style="font-size:25px">arrow_upward</i>
     </button>
 </template>
