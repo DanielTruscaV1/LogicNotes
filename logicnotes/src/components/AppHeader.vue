@@ -1,5 +1,34 @@
 <script setup>
 
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const formattedTime1 = ref('');
+const formattedTime2 = ref('');
+
+
+const updateLiveTime = () => {
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  formattedTime1.value = `${month}-${day}-${year}`;
+  formattedTime2.value = `${hours}:${minutes}:${seconds}`
+};
+
+onMounted(() => {
+  updateLiveTime();
+  setInterval(updateLiveTime, 1000);
+});
+
+onUnmounted(() => {
+  clearInterval(updateLiveTime);
+});
+
 </script>
 
 <template>
@@ -8,9 +37,43 @@
       LogicNotes
     </h1>
   </header>
+  <i class="material-icons" style="font-size:50px">access_time</i>
+  <p>
+    {{ formattedTime1 }}
+  </p>
+  <p id="clock">
+    {{ formattedTime2 }}
+  </p>
 </template>
 
 <style scoped>
+      i 
+      {
+        position:absolute;
+        top:20px;
+        right:110px;
+        z-index:5;
+
+        display:none;
+      }
+      p 
+      {
+        position:absolute;
+        top:20px;
+        right:30px;
+        margin:0px;
+        z-index:5;
+        font-family: 'Montserrat', sans-serif;
+        font-size:18px;
+
+        display:none;
+      }
+      #clock 
+      {
+        margin-top:30px;
+
+        display:none;
+      }
     header 
     {
       position:relative;
@@ -39,6 +102,33 @@
       {
         left:30px;
         text-align:left;
+      }
+      i 
+      {
+        position:absolute;
+        top:20px;
+        right:110px;
+        z-index:5;
+
+        display:block;
+      }
+      p 
+      {
+        position:absolute;
+        top:20px;
+        right:30px;
+        margin:0px;
+        z-index:5;
+        font-family: 'Montserrat', sans-serif;
+        font-size:18px;
+
+        display:block;
+      }
+      #clock 
+      {
+        margin-top:30px;
+
+        display:block;
       }
     }
 </style>
