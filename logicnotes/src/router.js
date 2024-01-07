@@ -15,6 +15,7 @@ const routes = [
   },
   {
     path: '/notes',
+    name: "Notes",
     component:Notes,
   },
   {

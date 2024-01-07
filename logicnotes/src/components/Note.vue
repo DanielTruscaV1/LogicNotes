@@ -54,6 +54,17 @@
     {
         window.scrollTo(0, 0);
     }
+
+    import { useRouter } from 'vue-router';
+
+    const router = useRouter();
+
+    function goBack()
+    {
+        router.push({
+            name:"Notes",
+        });
+    }
 </script>
 
 <template>
@@ -98,12 +109,22 @@
             <br/>
         </section>
     </section>
+    <button 
+        id="back" 
+        @click="goBack"
+    >
+        <i class="material-icons" style="font-size:25px">arrow_back</i>
+    </button>
     <button @click="scrollUp">
         <i class="material-icons" style="font-size:25px">arrow_upward</i>
     </button>
 </template>
 
 <style scoped>
+    #back 
+    {
+        left:3vw;
+    }
     button 
     {
         position:fixed;
