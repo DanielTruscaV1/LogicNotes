@@ -93,15 +93,24 @@
             <br/>
         </section>
     </section>
+    <button>
+        <i class="material-icons">arrow_upward</i>
+    </button>
 </template>
 
 <style scoped>
+    button 
+    {
+        position:fixed;
+        bottom:0px;
+        right:0px;
+    }
     ul 
     {
-        padding-left:30px;
-        position:absolute;
+        padding-left:20px;
+        position:fixed;
         width:17vw;
-        top:30px;
+        top:27vh;
         margin:0px;
         list-style-type:none;
     }
@@ -115,7 +124,10 @@
         margin-bottom:20px;
         font-size:14px;
         cursor:pointer;
-        border-left:3px solid white;
+        border-left:15px solid white;
+        border-top:3px solid white;
+        border-bottom:3px solid white;
+        border-right:3px solid white;
     }
     li:hover 
     {
@@ -179,18 +191,22 @@
     }
     .tag 
     {
-        display:inline-block;
-        padding:10px;
+        display:block;
+        width:12vw;
+        padding:15px;
         height:20px;
-        border:3px solid white;
-        border-radius:20px;
+        border-right:15px solid white;
+        border-top:3px solid white;
+        border-bottom:3px solid white;
+        border-left:3px solid white;
         line-height:1;
+        font-weight:800;
     }
     #tags-container 
     {
-        position:absolute;
-        top:0px;
-        right:0px;
+        position:fixed;
+        top:20vh;
+        right:-10px;
         width:300px;
         height:auto;
     }
