@@ -264,5 +264,10 @@
             width:100vw;
             height:400px;
         }
+        button 
+        {
+            background-color:white;
+            color:black;
+        }
     }
 </style>
