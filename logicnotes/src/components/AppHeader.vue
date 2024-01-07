@@ -18,8 +18,8 @@
       left:0px;
       width:100vw;
       height:10vh;
-      background-color:rgb(40, 10, 70);
-      color:white;
+      background-color:rgb(230, 230, 255);
+      color:black;
       font-family: 'Montserrat', sans-serif;
       z-index:3;
     }

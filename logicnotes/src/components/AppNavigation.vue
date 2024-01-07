@@ -55,9 +55,10 @@
       left:0px;
       width:100vw;
       height:10vh;
-      background-color:rgb(40, 10, 70);
-      color:white;
+      background-color:rgb(200, 200, 255);
+      color:black;
       font-family: 'Montserrat', sans-serif;
+      border:3px solid black;
     }
     h1 
     {
@@ -86,7 +87,8 @@
       list-style-type:none;
       text-align:center;
       font-size:20px;
-      background-color:rgb(60, 30, 90);
+      background-color:rgb(200, 200, 255);
+      color:black;
     }
     @media screen and (min-width: 600px)
     {
@@ -99,19 +101,27 @@
       }
       ul 
       {
+        position:relative;
+        top:0px;
         display:inline-block !important;
-        max-height:60px !important;
+        height:100%;
       }
       li 
       {
+        position:relative;
+        top:0px;
+        padding-top:3vh;
+        padding-bottom:3vh;
         display:inline-block;
         width:220px;
+        height:4vh;
         cursor:pointer;
         background-color:transparent;
       }
       li:hover 
       {
-        background-color:rgb(60, 30, 90);
+        background-color:rgb(180, 180, 235);
+        color:black;
       }
     }
 </style>

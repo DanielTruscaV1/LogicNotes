@@ -112,8 +112,8 @@
         width:50px;
         height:50px;
         background-color:transparent;
-        color:white;
-        border:3px solid white;
+        color:black;
+        border:3px solid black;
         border-radius:50%;
         z-index:5;
         cursor:pointer;
@@ -142,10 +142,11 @@
         margin-bottom:20px;
         font-size:14px;
         cursor:pointer;
-        border-left:15px solid white;
-        border-top:3px solid white;
-        border-bottom:3px solid white;
-        border-right:3px solid white;
+        background-color:rgb(200, 200, 255);
+        border-left:15px solid black;
+        border-top:3px solid black;
+        border-bottom:3px solid black;
+        border-right:3px solid black;
     }
     li:hover 
     {
@@ -156,8 +157,8 @@
    {
         position:relative;
         width:100vw;
-        background-color:rgb(50, 30, 90);
-        color:white;
+        background-color:rgb(230, 230, 255);
+        color:black;
         font-family: 'Montserrat', sans-serif;
    }
    #card 
@@ -168,7 +169,8 @@
         top:30px;
         left:20vw;
         width:60vw;
-        background-color:rgb(60, 40, 100);
+        background-color:rgb(200, 200, 255);
+        border:3px solid black;
         border-radius:30px;
    }
    h1 
@@ -213,10 +215,11 @@
         width:12vw;
         padding:15px;
         height:20px;
-        border-right:15px solid white;
-        border-top:3px solid white;
-        border-bottom:3px solid white;
-        border-left:3px solid white;
+        background-color:rgb(200, 200, 255);
+        border-right:15px solid black;
+        border-top:3px solid black;
+        border-bottom:3px solid black;
+        border-left:3px solid black;
         line-height:1;
         font-weight:800;
     }
@@ -224,7 +227,7 @@
     {
         position:fixed;
         top:20vh;
-        right:-10px;
+        right:20px;
         width:300px;
         height:auto;
     }
@@ -261,8 +264,24 @@
         {
             display:block;
             position:relative;
+            top:0px;
+            margin-top:30px;
             width:100vw;
             height:400px;
+        }
+        ul 
+        {
+            position:relative;
+            top:30px;
+        }
+        li 
+        {
+            margin-left:-10px;
+            width:87vw;
+        }
+        .tag 
+        {
+            width:78vw;
         }
         button 
         {

@@ -72,8 +72,8 @@
         min-height: 50vh;
         flex-direction: row;
         flex-wrap: wrap;
-        background-color:rgb(50, 30, 90);
-        color:white;
+        background-color:rgb(230, 230, 255);
+        color:black;
         font-family: 'Montserrat', sans-serif;
         z-index:1;
     }
@@ -86,9 +86,10 @@
         width:80vw;
         min-height:50vh;
         margin-bottom:30px;
-        background-color:rgb(40, 10, 70);
+        background-color:rgb(200, 200, 255);
+        color:black;
+        border:3px solid black;
         border-radius:30px;
-        border:3px solid white;
         cursor:pointer;
         z-index:2;
     }

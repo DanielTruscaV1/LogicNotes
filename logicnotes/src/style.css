@@ -8,9 +8,9 @@ pre
 {
   display:inline-block;
   padding:20px;
-  background-color:rgb(40, 30, 80);  
+  background-color:rgb(200, 200, 240);  
   word-break: break-all;
-  border:2px solid white;
+  border:2px solid black;
   border-radius:20px;
 }
 /* ----------------------------------------------

@@ -27,8 +27,8 @@
         position:relative;
         width:100vw;
         min-height:70vh;
-        background-color:rgb(50, 30, 90);
-        color:white;
+        background-color:rgb(230, 230, 255);
+        color:black;
         font-family: 'Montserrat', sans-serif;
         z-index:1;
     }
@@ -55,9 +55,9 @@
       left:25vw;
       width:50vw;
       height:60px;
-      background-color:transparent;
-      border:3px solid white;
-      color:white;
+      background-color:rgb(200, 200, 255);
+      border:3px solid black;
+      color:black;
       border-radius:20px;
       font-size:20px;
     }
@@ -77,7 +77,7 @@
       }
       button:hover 
       {
-        background-color:white;
+        background-color:rgb(200, 200, 255);
         color:black;
       }
     }
