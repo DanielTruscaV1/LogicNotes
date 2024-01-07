@@ -15,7 +15,7 @@
     {
         position:relative;
         width:100vw;
-        height:10vh;
+        height:15vh;
         background-color:rgb(40, 10, 70);
         color:white;
         font-family: 'Montserrat', sans-serif;

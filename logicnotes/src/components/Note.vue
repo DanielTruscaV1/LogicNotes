@@ -94,7 +94,7 @@
         </section>
     </section>
     <button>
-        <i class="material-icons">arrow_upward</i>
+        <i class="material-icons" style="font-size:25px">arrow_upward</i>
     </button>
 </template>
 
@@ -102,8 +102,21 @@
     button 
     {
         position:fixed;
-        bottom:0px;
-        right:0px;
+        bottom:5vh;
+        right:3vw;
+        width:50px;
+        height:50px;
+        background-color:transparent;
+        color:white;
+        border:3px solid white;
+        border-radius:50%;
+        z-index:5;
+        cursor:pointer;
+    }
+    button:hover 
+    {
+        background-color: white;
+        color:black;
     }
     ul 
     {
