@@ -128,7 +128,7 @@
         padding-left:20px;
         position:fixed;
         width:17vw;
-        top:27vh;
+        top:25.5vh;
         margin:0px;
         list-style-type:none;
     }

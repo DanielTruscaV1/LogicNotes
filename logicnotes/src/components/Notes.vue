@@ -114,7 +114,7 @@
         left:5%;
         margin-bottom:30px;
         width:90%;
-        height:220px;
+        height:35vh;
         border-radius:30px;
         z-index:3;
     }
