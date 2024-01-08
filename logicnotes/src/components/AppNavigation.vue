@@ -4,6 +4,7 @@
   }
 
   import {ref} from "vue";
+import router from "../router";
 
   let navigationListDisplay = ref("none");
 
@@ -28,6 +29,17 @@
     }
   }
 
+  import { useRouter } from 'vue-router';
+
+  const router1 = useRouter();
+
+  function goTo(path)
+  {
+    router1.push({
+      name: path,
+    });
+  }
+
 </script>
 
 <template>
@@ -43,7 +55,7 @@
       <li>Sign-in</li>
       <li>Sign-up</li>
       <li>Account</li>
-      <li>Settings</li>
+      <li @click="goTo('Settings')">Settings</li>
     </ul>
   </nav>
 </template>

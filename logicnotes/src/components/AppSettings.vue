@@ -51,6 +51,39 @@
         border:3px solid black;
         font-family: 'Montserrat', sans-serif;
     }
+    h1 
+    {
+        margin-left:5%;
+        padding-bottom:20px;
+        width:90%;
+        border-bottom:3px solid black;
+    }
+    button 
+    {
+        margin-right:10px;
+        width:50px;
+        height:50px;
+        border:3px solid black;
+        border-radius:10px;
+        cursor:pointer;
+    }
+    #theme-button1
+    {
+        margin-left:5%;
+        background-color:rgb(240, 240, 240);
+    }
+    #theme-button2
+    {
+        background-color:rgb(40, 40, 40);
+    }
+    #theme-button3
+    {
+        background-color:rgb(200, 200, 255);
+    }
+    #theme-button4
+    {
+        background-color:rgb(255, 200, 150);
+    }
     @media screen and (min-width: 600px)
     {
         #settings-container
@@ -62,39 +95,6 @@
             min-height:20vh;
             background-color:rgb(200, 200, 255);
             border:3px solid black;
-        }
-        h1 
-        {
-            margin-left:5%;
-            padding-bottom:20px;
-            width:90%;
-            border-bottom:3px solid black;
-        }
-        button 
-        {
-            margin-right:10px;
-            width:50px;
-            height:50px;
-            border:3px solid black;
-            border-radius:10px;
-            cursor:pointer;
-        }
-        #theme-button1
-        {
-            margin-left:5%;
-            background-color:rgb(240, 240, 240);
-        }
-        #theme-button2
-        {
-            background-color:rgb(40, 40, 40);
-        }
-        #theme-button3
-        {
-            background-color:rgb(200, 200, 255);
-        }
-        #theme-button4
-        {
-            background-color:rgb(255, 200, 150);
         }
     }
 </style>
