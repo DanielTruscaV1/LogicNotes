@@ -4,89 +4,106 @@
 Statement
 </h1>
 <p>
-You are given two strings 's1' and 's2'.
+There is an undirected connected tree with n nodes labeled from 0 to n - 1 and n - 1 edges.
 </p>
 <p>
-Your task is to find the length of the longest common subsequence of the two given strings.
+You are given the integer n and the array edges where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the tree.
 </p>
 <p>
-If there is no common subsequence for the two given strings then return 0.
-</p>
-<p>
-A subsequence of a string is a strings that can be obtained from another string by removing any number of characters but without changing the order of the characters.
+Return an array answer of length n where answer[i] is the sum of the distances between the ith node in the tree and all other nodes.
 </p>
 <h1>
 Example
 </h1>
 <p>
-Suppose the input string 's1' is: "abcde"
-and the input string 's2' is: "ace"
+Input: n = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]
 </p>
 <p>
-Then, the desired output is: 3
+Output: [8,12,6,10,10,10]
 </p>
 <p>
-This is because the longest common subsequence of the two given strings is "ace" which has the length 3.
-</p>
-<p>
-Now suppose the input string 's1' is: "abc"
-and the input string 's2' is "abc" as well
-</p>
-<p>
-In this case, the desired output is: 3
-</p>
-<p>
-The reason is that the longest common subsequence of the two given strings is "abc" and its length is 3.
+We can see that dist(0,1) + dist(0,2) + dist(0,3) + dist(0,4) + dist(0,5)
+equals 1 + 1 + 2 + 2 + 2 = 8.
+Hence, answer[0] = 8, and so on.
 </p>
 <h1>
 Solution
 </h1>
 <p>
-The best way to solve this problem is by using dynamic programming.
-To solve the problem we can build a 2D array named 'dp' with as many rows as the length of the first string say 'l1'
-and with as many columns as the length of the second string say 'l2'.
-The value of 'dp[i][j]' will represent the legnth of the longest common subsequence discovered by iterating untill index 'i' in the first string and untill index 'j' in the second string.
-The value of 'dp[i][0]' and 'dp[0][j]' will always be 0 since there cannot be a non-empty common subsequence when one of the strings is empty.
-The value of 'dp[i][j]' will be computed recursively like this:
-If s1[i] == s2[j] then we can increase the length of the current subsequence by 1 since both characters are identical.
-Else we just ignore the current character from either string 's1' or string 's2' and continue the search by picking the maximum length when ignoring either 's1[i]' or 's2[j]'.
+In this problem we are asked to find the sum of the distances from a node 'i' to all other nodes and we must to this for all nodes in the tree.
+</p>
+<p>
+The efficient approach is based on the idea of using Depth-First Search two times so that we can gather information about the steps required to go from any node to another.
+</p>
+<p>
+We first start a DFS on the root of the tree and keep track of the number of times a node will be visited from above (meaning that if we want to visit a child of node 'a' then we have to go through node 'a' itself if we are coming from above node 'a').
+</p>
+<p>
+At this step we also keep in mind that for each node that is a child of 'a', say it will be accessed 'x' times  in the problem scenario, then the node 'a' will also be accessed at least 'x' times for the reason explained above.
+</p>
+<p>
+With this in mind, we can safely update the value of the answer array for the node 'a' like this 'answer[a] += x'.
+</p>
+<p>
+Next we start another DFS on the root of the tree and we update the value of the answer array due to the fact that now we know how many times a path must go through node 'a'.
+</p>
+<p>
+Finally we return the answer array.
 </p>
 <h1>
 Implementation
 </h1>
 <pre>
 <code>
-#include < iostream >
-#include < cstring >
-using namespace std;
+class Solution {
+public:
 
-string s1, s2;
-int l1, l2;
-vector<vector<int>> dp;
+    vector<vector<int>> v;
+    vector<int> ans, counter;
 
-int main()
-{
-    //Read the input
-    cin>>s1>>s2;
-    l1 = s1.size();
-    l2 = s2.size();
-    dp.resize(l1, std::vector<int>(l2, 0));
+    void DFS1(int i, int previous)
+    {
+        for(auto next : v[i])
+            if(next != previous)
+            {
+                DFS1(next, i);
+                counter[i] += counter[next];
+                ans[i] += ans[next]+counter[next];
+            }
+        counter[i]++;
+    }
 
-    //Use dynamic programming
-    for(int i = 0;i < l1+1;i++)
-        for(int j = 0;j < l2+1;j++)
-            if(i == 0 || j == 0)
-                dp[i][j] = 0;
-            else if(s1[i-1] == s2[j-1])
-                dp[i][j] = dp[i-1][j-1]+1;
-            else 
-                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+    void DFS2(int i, int n, int previous)
+    {
+        for(auto next : v[i])
+            if(next != previous)
+            {
+                ans[next] = ans[i]-counter[next]+n-counter[next];
+                DFS2(next, n, i);
+            }
+    }
 
-    //Write the output
-    cout<<dp[l1][l2];
+    vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges) {
+        v.resize(n);
 
-    return 0;
-}
+        for(int i = 0;i < n-1;i++)
+        {
+            int a = edges[i][0];
+            int b = edges[i][1];
+            v[a].push_back(b);
+            v[b].push_back(a);
+        }
+
+        ans.resize(n);
+        counter.resize(n);
+
+        DFS1(0, -1);
+        DFS2(0, n, -1);
+
+        return ans;
+
+    }
+};
 </code>
 </pre>
 </section>

@@ -110,6 +110,11 @@
         </section>
     </section>
     <button 
+        id="feedback" 
+    >
+        <i class="material-icons" style="font-size:30px">help</i>
+    </button>
+    <button 
         id="back" 
         @click="goBack"
     >
@@ -121,6 +126,10 @@
 </template>
 
 <style scoped>
+    #feedback 
+    {
+        bottom:11vh;
+    }
     #back 
     {
         left:3vw;
