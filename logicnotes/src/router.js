@@ -8,6 +8,8 @@ import AppFooter from "./components/AppFooter.vue";
 import Notes from "./components/Notes.vue";
 import Note from "./components/Note.vue";
 
+import AppSettings from "./components/AppSettings.vue";
+
 const routes = [
   {
     path: '/',
@@ -23,6 +25,12 @@ const routes = [
     name: "Note",
     component:Note,
     props: true,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component:AppSettings,
+    props:true,
   }
 ];
 
