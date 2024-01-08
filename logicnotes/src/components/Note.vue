@@ -128,7 +128,7 @@
 <style scoped>
     #feedback 
     {
-        bottom:11vh;
+        bottom:12vh;
     }
     #back 
     {
@@ -156,9 +156,9 @@
     ul 
     {
         padding-left:20px;
-        position:fixed;
+        position:absolute;
         width:17vw;
-        top:25.5vh;
+        top:5vh;
         margin:0px;
         list-style-type:none;
     }
@@ -255,9 +255,9 @@
     }
     #tags-container 
     {
-        position:fixed;
-        top:20vh;
-        right:20px;
+        position:absolute;
+        top:-1vh;
+        right:40px;
         width:300px;
         height:auto;
     }
