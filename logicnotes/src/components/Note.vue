@@ -141,7 +141,7 @@
         right:3vw;
         width:50px;
         height:50px;
-        background-color:transparent;
+        background-color:rgb(200, 200, 240);
         color:black;
         border:3px solid black;
         border-radius:50%;
