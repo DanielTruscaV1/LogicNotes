@@ -43,6 +43,12 @@
 
 <template>
     <section id="notes-container">
+        <section id="search-container">
+            <input type="text"/>
+            <button>
+                <i class="material-icons" style="font-size:36px">search</i>
+            </button>
+        </section>
         <section 
             class="note-preview"
             v-for="(note, index) in notes"
@@ -117,6 +123,42 @@
         height:35vh;
         border-radius:30px;
         z-index:3;
+    }
+    #search-container 
+    {
+        margin-top:30px;
+        width:100vw;
+        height:10vh;
+    }
+    input 
+    {
+        margin-left:25vw;
+        padding:5px;
+        width:50vw;
+        height:30px;
+        background-color:var(--theme2);
+        color:var(--color);
+        font-size:20px;
+        border:3px solid var(--color);
+        border-radius:20px;
+    }
+    #search-container button 
+    {
+        position:relative;
+        top:13px;
+        left:-20px;
+        padding:5px;
+        width:100px;
+        height:47px;
+        background-color:var(--theme3);
+        color:var(--color);
+        border-left:3px solid var(--color);
+        border-top:none;
+        border-bottom:none;
+        border-right:none;
+        border-top-right-radius:10px;
+        border-bottom-right-radius:10px;
+        cursor:pointer;
     }
     @media screen and (min-width: 600px)
     {
