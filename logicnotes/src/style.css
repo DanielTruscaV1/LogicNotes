@@ -1,3 +1,11 @@
+:root 
+{
+  --theme1: rgb(40, 40, 40);
+  --theme2: rgb(20, 20, 20);
+  --theme3: rgb(10, 10, 10);
+  --color:white;
+  --color2:black;
+}
 body 
 {
     margin:0px;
@@ -8,16 +16,17 @@ pre
 {
   display:inline-block;
   padding:20px;
-  background-color:rgb(200, 200, 240);  
+  background-color:var(--theme3);
+  color:var(--color);  
   word-break: break-all;
-  border:2px solid black;
+  border:2px solid var(--color);
   border-radius:20px;
 }
 #content h1 
 {
   width:115%;
   padding-bottom:15px;
-  border-bottom:3px solid black;
+  border-bottom:3px solid var(--color);
   font-size:22px;
 }
 #content p 

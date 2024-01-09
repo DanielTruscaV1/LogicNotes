@@ -53,6 +53,7 @@ onUnmounted(() => {
         top:20px;
         right:110px;
         z-index:5;
+        color:var(--color);
 
         display:none;
       }
@@ -65,13 +66,15 @@ onUnmounted(() => {
         z-index:5;
         font-family: 'Montserrat', sans-serif;
         font-size:18px;
+        color:var(--color);
 
         display:none;
       }
       #clock 
       {
         margin-top:30px;
-
+        color:var(--color);
+        
         display:none;
       }
     header 
@@ -81,8 +84,8 @@ onUnmounted(() => {
       left:0px;
       width:100vw;
       height:10vh;
-      background-color:rgb(230, 230, 255);
-      color:black;
+      background-color:var(--theme1);
+      color:var(--color);
       font-family: 'Montserrat', sans-serif;
       z-index:3;
     }

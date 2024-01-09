@@ -141,17 +141,17 @@
         right:3vw;
         width:50px;
         height:50px;
-        background-color:rgb(200, 200, 240);
-        color:black;
-        border:3px solid black;
+        background-color:var(--theme2);
+        color:var(--color);
+        border:3px solid var(--color);
         border-radius:50%;
         z-index:5;
         cursor:pointer;
     }
     button:hover 
     {
-        background-color: white;
-        color:black;
+        background-color: var(--color1);
+        color:var(--color);
     }
     ul 
     {
@@ -172,23 +172,23 @@
         margin-bottom:20px;
         font-size:14px;
         cursor:pointer;
-        background-color:rgb(200, 200, 255);
-        border-left:15px solid black;
-        border-top:3px solid black;
-        border-bottom:3px solid black;
-        border-right:3px solid black;
+        background-color:var(--theme2);
+        border-left:15px solid var(--color);
+        border-top:3px solid var(--color);
+        border-bottom:3px solid var(--color);
+        border-right:3px solid var(--color);
     }
     li:hover 
     {
-        background-color:white;
-        color:black;
+        background-color:var(--color1);
+        color:var(--color);
     }
    #note-container 
    {
         position:relative;
         width:100vw;
-        background-color:rgb(230, 230, 255);
-        color:black;
+        background-color:var(--theme1);
+        color:var(--color);
         font-family: 'Montserrat', sans-serif;
    }
    #card 
@@ -199,8 +199,8 @@
         top:30px;
         left:20vw;
         width:60vw;
-        background-color:rgb(200, 200, 255);
-        border:3px solid black;
+        background-color:var(--theme2);
+        border:3px solid var(--color);
         border-radius:30px;
    }
    h1 
@@ -245,11 +245,11 @@
         width:12vw;
         padding:15px;
         height:20px;
-        background-color:rgb(200, 200, 255);
-        border-right:15px solid black;
-        border-top:3px solid black;
-        border-bottom:3px solid black;
-        border-left:3px solid black;
+        background-color:var(--theme2);
+        border-right:15px solid var(--color);
+        border-top:3px solid var(--color);
+        border-bottom:3px solid var(--color);
+        border-left:3px solid var(--color);
         line-height:1;
         font-weight:800;
     }
@@ -264,8 +264,8 @@
     .tag:hover 
     {
         cursor:pointer;
-        background-color:white;
-        color:black;
+        background-color:var(--color1);
+        color:var(--color);
     }
    @media screen and (max-width: 600px)
     {
@@ -315,8 +315,8 @@
         }
         button 
         {
-            background-color:white;
-            color:black;
+            background-color:var(--color1);
+            color:var(--color);
         }
     }
 </style>

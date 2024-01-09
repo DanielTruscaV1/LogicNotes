@@ -16,11 +16,11 @@
         position:relative;
         width:100vw;
         height:15vh;
-        background-color:rgb(200, 200, 255);
-        color:black;
+        background-color:var(--theme2);
+        color:var(--color);
         font-family: 'Montserrat', sans-serif;
         z-index:2;
-        border:3px solid black;
+        border-top:3px solid var(--color);
     }
     h1 
     {

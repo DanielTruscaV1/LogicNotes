@@ -27,8 +27,8 @@
         position:relative;
         width:100vw;
         min-height:70vh;
-        background-color:rgb(230, 230, 255);
-        color:black;
+        background-color:var(--theme1);
+        color:var(--color);
         font-family: 'Montserrat', sans-serif;
         z-index:1;
     }
@@ -55,9 +55,9 @@
       left:25vw;
       width:50vw;
       height:60px;
-      background-color:rgb(200, 200, 255);
-      border:3px solid black;
-      color:black;
+      background-color:var(--theme2);
+      border:3px solid var(--color);
+      color:var(--color);
       border-radius:20px;
       font-size:20px;
     }
@@ -77,8 +77,8 @@
       }
       button:hover 
       {
-        background-color:rgb(200, 200, 255);
-        color:black;
+        background-color:var(--theme2);
+        color:var(--color);
       }
     }
 </style>

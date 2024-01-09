@@ -67,10 +67,11 @@ import router from "../router";
       left:0px;
       width:100vw;
       height:10vh;
-      background-color:rgb(200, 200, 255);
-      color:black;
+      background-color:var(--theme2);
+      color:var(--color);
       font-family: 'Montserrat', sans-serif;
-      border:3px solid black;
+      border-top:3px solid var(--color);
+      border-bottom:3px solid var(--color);
     }
     h1 
     {
@@ -99,8 +100,8 @@ import router from "../router";
       list-style-type:none;
       text-align:center;
       font-size:20px;
-      background-color:rgb(200, 200, 255);
-      color:black;
+      background-color:var(--theme2);
+      color:var(--color);
     }
     @media screen and (min-width: 600px)
     {
@@ -132,8 +133,8 @@ import router from "../router";
       }
       li:hover 
       {
-        background-color:rgb(180, 180, 235);
-        color:black;
+        background-color:var(--theme1);
+        color:var(--color);
       }
     }
 </style>

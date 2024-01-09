@@ -38,7 +38,7 @@
         position:relative;
         width:100vw;
         min-height:65vh;
-        background-color:rgb(230, 230, 255);
+        background-color:var(--theme1);
     }
     #settings-container
     {
@@ -47,8 +47,8 @@
         left:2.5vw;
         width:90vw;
         min-height:80vh;
-        background-color:rgb(200, 200, 255);
-        border:3px solid black;
+        background-color:var(--theme2);
+        border:3px solid var(--color);
         font-family: 'Montserrat', sans-serif;
     }
     h1 
@@ -56,14 +56,15 @@
         margin-left:5%;
         padding-bottom:20px;
         width:90%;
-        border-bottom:3px solid black;
+        color:var(--color);
+        border-bottom:3px solid var(--color);
     }
     button 
     {
         margin-right:10px;
         width:50px;
         height:50px;
-        border:3px solid black;
+        border:3px solid var(--color);
         border-radius:10px;
         cursor:pointer;
     }
@@ -93,8 +94,8 @@
             left:10vw;
             width:80vw;
             min-height:20vh;
-            background-color:rgb(200, 200, 255);
-            border:3px solid black;
+            background-color:var(--theme2);
+            border:3px solid var(--color);
         }
     }
 </style>
