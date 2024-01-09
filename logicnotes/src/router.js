@@ -13,6 +13,7 @@ import AppSettings from "./components/AppSettings.vue";
 const routes = [
   {
     path: '/',
+    name:"Home",
     component:AppPage,
   },
   {

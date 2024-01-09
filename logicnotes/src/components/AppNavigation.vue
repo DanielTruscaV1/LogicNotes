@@ -50,8 +50,8 @@ import router from "../router";
     <ul 
       :style="{display: navigationListDisplay}"
     >
-      <li>Home</li>
-      <li>Notes</li>
+      <li @click="goTo('Home')">Home</li>
+      <li @click="goTo('Notes')">Notes</li>
       <li>Sign-in</li>
       <li>Sign-up</li>
       <li>Account</li>
