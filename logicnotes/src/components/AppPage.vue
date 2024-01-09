@@ -14,7 +14,7 @@
     <h1>
       Welcome to the LogicNotes project!
     </h1>
-    <img src="../assets/Logo1.png"/>
+    <img src="../assets/Logo2.png"/>
     <button @click="notesRedirect">
       See my notes
     </button>
@@ -45,7 +45,7 @@
       top:30px;
       left:10vw;
       width:80vw;
-      height:30vh;
+      height:50vh;
       border-radius:50px;
     }
     button 
