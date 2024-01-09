@@ -50,8 +50,8 @@
     }
     button 
     {
-      position:relative;
-      top:60px;
+      position:absolute;
+      margin-top:47.5vh;
       left:25vw;
       width:50vw;
       height:60px;
@@ -71,7 +71,8 @@
       }
       button 
       {
-        top:15vh;
+        margin-top:30vh;
+        left:45vw;
         width:10vw;
         cursor:pointer;
       }
