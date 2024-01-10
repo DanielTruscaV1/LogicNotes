@@ -5,12 +5,19 @@
 </script>
 
 <template>
-  <AppHeader/>
-  <AppNavigation/>
-  <router-view></router-view>
-  <AppFooter/>
+  <div>
+    <AppHeader/>
+    <AppNavigation/>
+    <router-view></router-view>
+    <AppFooter/>
+  </div>
+  
 </template>
 
 <style scoped>
-
+  div 
+  {
+    display:flex;
+    flex-direction:column;
+  }
 </style>

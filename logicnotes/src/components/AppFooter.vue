@@ -66,7 +66,7 @@
     }
     a 
     {
-      color:white;
+      color:var(--color);
       font-size:30px;
       text-decoration:none;
     }
