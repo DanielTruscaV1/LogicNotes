@@ -129,8 +129,8 @@
     }
     #search-container 
     {
-        margin-top:40px;
-        margin-bottom:30px;
+        margin-top:10px;
+        margin-bottom:10vh;
         width:100vw;
         height:10vh;
     }
@@ -163,6 +163,13 @@
             border-top-right-radius:10px;
             border-bottom-right-radius:10px;
             cursor:pointer;
+        }
+        #search-container p 
+        {
+            position:relative;
+            margin-top:0px;
+            text-align:center;
+            font-size:18px;
         }
     @media screen and (min-width: 600px)
     {
@@ -204,13 +211,6 @@
             border-top-right-radius:10px;
             border-bottom-right-radius:10px;
             cursor:pointer;
-        }
-        #search-container p 
-        {
-            position:relative;
-            margin-top:0px;
-            text-align:center;
-            font-size:18px;
         }
     }
 </style>

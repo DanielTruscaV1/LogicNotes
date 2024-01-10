@@ -110,7 +110,7 @@ onUnmounted(() => {
       {
         position:absolute;
         top:20px;
-        right:110px;
+        right:7vw;
         z-index:5;
 
         display:block;

@@ -7,6 +7,24 @@
     <h1>
         © LogicNotes 2024 Copyright
     </h1>
+    <ul>
+
+      <li>
+        <a href="#" class="fa fa-facebook"></a>
+      </li>
+      <li>
+        <a href="#" class="fa fa-instagram"></a>
+      </li>
+      <li>
+        <a href="#" class="fa fa-youtube"></a>
+      </li>
+      <li>
+        <a href="#" class="fa fa-github"></a>
+      </li>
+      <li>
+        <a href="#" class="fa fa-linkedin"></a>
+      </li>
+    </ul>
   </footer>
 </template>
 
@@ -15,7 +33,7 @@
     {
         position:relative;
         width:100vw;
-        height:15vh;
+        height:17vh;
         background-color:var(--theme2);
         color:var(--color);
         font-family: 'Montserrat', sans-serif;
@@ -28,5 +46,36 @@
         padding-top:20px;
         font-size:20px;
         text-align:center;
+    }
+    ul 
+    {
+      width:calc(30vw + 10vw);
+      margin-left:38vw;
+      list-style-type:none;
+    }
+    li 
+    {
+      margin:0.75vw;
+      padding:10px;
+      display:inline-block;
+    }
+    li:hover 
+    {
+      background-color:var(--color);
+      color:var(--color2);
+    }
+    a 
+    {
+      color:white;
+      font-size:30px;
+      text-decoration:none;
+    }
+    @media screen and (max-width: 600px)
+    {
+      ul
+      {
+        width:100vw;
+        margin-left:0px;
+      }
     }
 </style>
