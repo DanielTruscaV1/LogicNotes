@@ -74,8 +74,13 @@
     {
       ul
       {
-        width:100vw;
         margin-left:0px;
+        padding-left:0px;
+        width:100vw;
+      }
+      li 
+      {
+        margin-left:5.5vw;
       }
     }
 </style>

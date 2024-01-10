@@ -322,9 +322,31 @@
             display:block;
             position:relative;
             top:0px;
+            right:12.5vw;
             margin-top:30px;
             width:100vw;
             height:400px;
+        }
+        #tags-container p 
+        {
+            position:relative;
+            width:100vw;
+            top:30px;
+            font-size:22px;
+            text-align:center;
+        }
+        #jump-to p 
+        {
+            position:relative;
+            top:5vh;
+            margin-left:0px;
+            width:100vw;
+            font-size:22px;
+            text-align:center;
+        }
+        .tag
+        {
+            width:80vw !important;
         }
         ul 
         {

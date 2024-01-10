@@ -26,7 +26,7 @@
     {
         position:relative;
         width:100vw;
-        min-height:70vh;
+        min-height:81vh;
         background-color:var(--theme1);
         color:var(--color);
         font-family: 'Montserrat', sans-serif;

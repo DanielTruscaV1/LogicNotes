@@ -66,7 +66,7 @@ import router from "../router";
       position:relative;
       left:0px;
       width:100vw;
-      height:10vh;
+      height:7.5vh;
       background-color:var(--theme2);
       color:var(--color);
       font-family: 'Montserrat', sans-serif;
@@ -77,8 +77,9 @@ import router from "../router";
     {
       position:relative;
       margin:0px;
-      padding-top:20px;
+      padding-top:10px;
       text-align:center;
+      font-size:20px;
       z-index:3;
     }
     ul 
@@ -105,6 +106,10 @@ import router from "../router";
     }
     @media screen and (min-width: 600px)
     {
+      nav 
+      {
+        height:10vh;
+      }
       h1 
       {
         display:inline-block;
