@@ -5,6 +5,7 @@
   --theme3: rgb(10, 10, 10);
   --color:white;
   --color2:black;
+  --fontSize:50px;
 }
 body 
 {
@@ -32,6 +33,7 @@ pre
 #content p 
 {
   font-weight:600;
+  font-size:var(--fontSize);
 }
 @media screen and (min-width: 600px)
 {

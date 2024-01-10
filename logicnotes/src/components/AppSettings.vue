@@ -26,6 +26,11 @@
             document.documentElement.style.setProperty('--color2', 'white');
         }
     }
+
+    function changeFont(fontSize)
+    {
+        document.documentElement.style.setProperty('--fontSize', fontSize+"px");
+    }
 </script>
 
 <template>
@@ -47,6 +52,24 @@
                 <button id="theme-button4" @click="changeTheme('orange')">
                     
                 </button>
+                <h1>
+                    Font
+                </h1>
+                <button id="font-button1" @click="changeFont(16)">
+                    16px
+                </button>
+                <button id="font-button2" @click="changeFont(18)">
+                    18px
+                </button>
+                <button id="font-button3" @click="changeFont(20)">
+                    20px
+                </button>
+                <button id="font-button4" @click="changeFont(22)">
+                    22px
+                </button>
+                <br/>
+                <br/>
+                <br/>
             </section>
         </main>
     </div>
@@ -111,6 +134,10 @@
     #theme-button4
     {
         background-color:rgb(255, 200, 150);
+    }
+    #font-button1 
+    {
+        margin-left:5%;
     }
     @media screen and (min-width: 600px)
     {
