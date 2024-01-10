@@ -44,6 +44,9 @@
 <template>
     <section id="notes-container">
         <section id="search-container">
+            <p>
+                Search for a note
+            </p>
             <input type="text"/>
             <button>
                 <i class="material-icons" style="font-size:36px">search</i>
@@ -126,7 +129,7 @@
     }
     #search-container 
     {
-        margin-top:30px;
+        margin-top:40px;
         margin-bottom:30px;
         width:100vw;
         height:10vh;
@@ -167,10 +170,10 @@
       {
         top:30px;
         left:0px;
-        margin-left:2.5vw;
-        margin-bottom:30px;
+        margin-left:2.8vw;
+        margin-bottom:50px;
         display:inline-block !important;
-        width:29vw !important;
+        width:21vw !important;
       }
       input 
         {
@@ -201,6 +204,13 @@
             border-top-right-radius:10px;
             border-bottom-right-radius:10px;
             cursor:pointer;
+        }
+        #search-container p 
+        {
+            position:relative;
+            margin-top:0px;
+            text-align:center;
+            font-size:18px;
         }
     }
 </style>

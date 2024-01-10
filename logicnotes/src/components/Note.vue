@@ -70,6 +70,9 @@
 <template>
     <section id="note-container">
         <section id="jump-to">
+            <p>
+               List of Contents
+            </p>
             <ul>
                 <li
                     v-for="(title, index) in titles"
@@ -100,6 +103,9 @@
         </section>
         
         <section id="tags-container">
+            <p>
+                Related tags
+            </p>
             <p 
                 v-for="(tag, index) in note.tags.split(' ')"
                 class="tag"
@@ -158,7 +164,7 @@
         padding-left:20px;
         position:absolute;
         width:17vw;
-        top:5vh;
+        top:calc(5vh + 130px);
         margin:0px;
         list-style-type:none;
     }
@@ -245,19 +251,21 @@
         width:12vw;
         padding:15px;
         height:20px;
+        margin-bottom:20px;
         background-color:var(--theme2);
         border-right:15px solid var(--color);
         border-top:3px solid var(--color);
         border-bottom:3px solid var(--color);
         border-left:3px solid var(--color);
         line-height:1;
+        font-size:16px !important;
         font-weight:800;
     }
     #tags-container 
     {
         position:absolute;
-        top:-1vh;
-        right:40px;
+        top:calc(-1vh + 100px);
+        right:3.5vw;
         width:300px;
         height:auto;
     }
@@ -266,6 +274,25 @@
         cursor:pointer;
         background-color:var(--color1);
         color:var(--color);
+    }
+    #jump-to 
+    {
+        display:inline-block;
+        min-width:17vw;
+    }
+    #jump-to p 
+    {
+        position:relative;
+        top:120px;
+        font-size:22px;
+        text-align:center;
+    }
+    #tags-container p 
+    {
+        position:relative;
+        top:30px;
+        font-size:22px;
+        text-align:center;
     }
    @media screen and (max-width: 600px)
     {
