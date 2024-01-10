@@ -25,11 +25,13 @@
             document.documentElement.style.setProperty('--color', 'black');
             document.documentElement.style.setProperty('--color2', 'white');
         }
+        alert("Theme successfully set.");
     }
 
     function changeFont(fontSize)
     {
         document.documentElement.style.setProperty('--fontSize', fontSize+"px");
+        alert("Font size successfully set.");
     }
 </script>
 
