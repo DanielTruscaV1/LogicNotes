@@ -1,91 +1,86 @@
 `
 <section>
+<a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/">
+Source of the problem: LeetCode
+</a>
 <h1>
-What is Graph Theory?
+Statement
 </h1>
 <p>
-Graph theory is a mathematical discipline that explores the properties and relationships of entities represented as nodes and the connections between them, known as edges, in structures called graphs. It provides a framework for analyzing and understanding the connectivity patterns in various systems and networks.
+You are given a weighted undirected graph with 'n' nodes and a list of edges of the form (a, b, w) where 'a' represents the node a, 'b' represents the node b and 'w' represents the weight asociated with the edge from node a to b.
+</p>
+<p>
+You are also given an integer 'k' which represents the distance threshold for any path in the graph.
+</p>
+<p>
+The task is to find the node with the least number of neighbours.
+</p>
+<p>
+Note that if there is a path from node a to node b but the weight of the path is greater than the threshold then the two nodes are not considered neightbours.
+</p>
+<p>
+If there are multiple nodes that satisfy the condition then return the one with the greatest number.
 </p>
 <h1>
-What is a graph?
+Solution
 </h1>
 <p>
-In the context of graph theory, a graph is a mathematical representation of a set of objects where some pairs of the objects are connected by links, which are typically called edges. The objects are represented by vertices or nodes. A graph can be either directed or undirected, depending on whether the edges have a specific direction or not.
+We first create a matrix (2D array) that stores the minimum distance between any two nodes 'i' and 'j'.
+</p>
+<p>
+This matrix will be created using the Warshall-Floyd algorithm in O(n^3) time complexity since if the nodes 'i' and 'k' are neighbours and if the nodes 'j' and 'k' are neighbours then the nodes 'i' and 'j' must also be neighbours.
+</p>
+<p>
+Then we pick all nodes from 0 to n-1 and check whether or not they have the least number of neighbours by actually checking whether or not the current node is a neighbour of any of the other nodes.
+We can achive this in O(n^2) time complexity by using the minimum weight matrix that has been constructed previously.
+</p>
+<p>
+Finally we return the answer.
 </p>
 <h1>
-Types of graphs
+Implementation
 </h1>
-<p>
-Graphs can be broadly classified into two main types based on the nature of their edges: directed graphs (digraphs) and undirected graphs. Additionally, graphs may have specific characteristics or structures, leading to various subtypes. Here are some common types of graphs:
-</p>
-<p>
-<strong>1. Directed Graph (Digraph): </strong>
-In a directed graph, edges have a direction. That is, each edge connects an ordered pair of vertices, indicating a one-way relationship between them.
-</p>
-<img src="https://cdn.discordapp.com/attachments/1027293577690230837/1194677753274962050/image.png?ex=65b1395c&is=659ec45c&hm=2e2861f478fda6f28ecbae3e515c765631171a2fc321436d6fe0d410382056ad&"/>
+<pre>
+<code>
+class Solution {
+public:
+    int findTheCity(int n, vector<vector<int>>& edges, int distanceThreshold) {
+        int dist[n][n];
 
-<p>
-<strong>2. Undirected Graph:</strong>
- In an undirected graph, edges have no direction. The relationship between vertices is symmetric, meaning it goes both ways.
-</p>
-<img src="https://cdn.discordapp.com/attachments/1027293577690230837/1194678002999636068/image.png?ex=65b13997&is=659ec497&hm=19f7d862100375a9652afbc8d62434560f518b80fc8d5509ae303af856c18552&"/>
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                dist[i][j] = i == j ? 0 : 10001;
+            }
+        }
 
-<p>
-<strong>
-3. Weighted Graph:
-</strong>
-A weighted graph assigns a numerical weight to each edge, representing some measure of distance, cost, or strength of the relationship between the connected vertices.
-</p>
-<img src="https://cdn.discordapp.com/attachments/1027293577690230837/1194678831794114670/image.png?ex=65b13a5d&is=659ec55d&hm=282a67f7bd8591000ac327595d61a44889b2a337f8c9890e22f026f2964e15be&"/>
+        for(auto edge : edges)
+            dist[edge[0]][edge[1]] = dist[edge[1]][edge[0]] = edge[2];
 
-<p>
-<strong>
-4. Unweighted Graph: 
-</strong>
-In contrast to a weighted graph, an unweighted graph has no assigned numerical values to its edges.
-<p>
-<p>
-<strong>
-5. Cyclic Graph:
-</strong>
-A graph that contains at least one cycle, which is a path that starts and ends at the same vertex.
-</p>
-<img src="https://cdn.discordapp.com/attachments/1027293577690230837/1194679143816757358/image.png?ex=65b13aa7&is=659ec5a7&hm=16ccef34f119283601d15dfc492140ec76c30d9d76e074f32a19a2ab8a3c2698&"/>
-
-<p>
-<strong>
-6. Acyclic Graph:
-</strong>
-A graph that has no cycles. Directed acyclic graphs (DAGs) are particularly important in various applications, such as task scheduling.
-</p>
-
-<p>
-<strong>
-7. Connected Graph:
-</strong>
-A graph is connected if there is a path between every pair of vertices. If a graph is not connected, it may consist of disconnected components.
-</p>
-<img src="https://cdn.discordapp.com/attachments/1027293577690230837/1194679476165017661/image.png?ex=65b13af7&is=659ec5f7&hm=1e225e9125a40f796bb9a55ef41612a1b5e5004f259f5ce3b11a5c1ea1133328&"/>
-
-<p>
-<strong>
-8. Complete Graph:
-</strong>
- In a complete graph, every pair of distinct vertices is connected by an edge. An undirected complete graph has the maximum possible number of edges.
-</p>
-
-<p>
-<strong>
-9. Bipartite Graph: 
-</strong>
-A graph whose vertices can be divided into two disjoint sets such that every edge connects a vertex in one set to a vertex in the other set.
-</p>
-
-<p>
-<strong>
-10. Tree: 
-</strong>
-A connected acyclic graph. A tree with a designated root is called a rooted tree.
-</p>
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+                }
+            }
+        }
+        int ans = -1;
+        int minimum = INT_MAX;
+        for(int i = 0;i < n;i++)
+        {
+            int counter = 0;
+            for(int j = 0;j < n;j++)
+                if(dist[i][j] <= distanceThreshold)
+                    counter++;
+            if(counter <= minimum)
+            {
+                minimum = counter;
+                ans = i;
+            }
+        }
+        return ans;
+    }
+};
+</code>
+</pre>
 </section>
 `

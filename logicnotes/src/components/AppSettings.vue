@@ -25,6 +25,14 @@
             document.documentElement.style.setProperty('--color', 'black');
             document.documentElement.style.setProperty('--color2', 'white');
         }
+        else if(theme == "white")
+        {
+            document.documentElement.style.setProperty('--theme1', 'rgb(240, 240, 240)');
+            document.documentElement.style.setProperty('--theme2', 'rgb(220, 220, 220)');
+            document.documentElement.style.setProperty('--theme3', 'rgb(200, 200, 200)');
+            document.documentElement.style.setProperty('--color', 'black');
+            document.documentElement.style.setProperty('--color2', 'white');
+        }
         alert("Theme successfully set.");
     }
 
@@ -42,7 +50,7 @@
                 <h1>
                     Theme
                 </h1>
-                <button id="theme-button1">
+                <button id="theme-button1" @click="changeTheme('white')">
 
                 </button>
                 <button id="theme-button2" @click="changeTheme('black')">
