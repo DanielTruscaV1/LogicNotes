@@ -8,6 +8,30 @@
                 <h1>
                     Sign-Up
                 </h1>
+                <p>
+                    First Name
+                </p>
+                <input type="text"/>
+                <p>
+                    Last Name
+                </p>
+                <input type="text"/>
+                <p>
+                    Email
+                </p>
+                <input type="text"/>
+                <p>
+                    Password
+                </p>
+                <input type="text"/>
+                <p>
+                    Confirm Passsword
+                </p>
+                <input type="text"/>
+                <br/>
+                <button>
+                    Sign-Up
+                </button>
             </section>
             <div>
             </div>
@@ -55,6 +79,35 @@
         border-bottom:3px solid var(--color);
         text-align:center;
     }
+    p 
+    {
+        margin-left:5%;
+        padding-bottom:20px;
+        width:90%;
+        color:var(--color);
+    }
+    input 
+    {
+        margin-left:5%;
+        width:80%;
+        height:30px;
+        border-radius:10px;
+        background-color:var(--theme1);
+        color:var(--color);
+        border:3px solid var(--color);
+        font-size:18px;
+    }
+    button 
+    {
+        margin-top:50px;
+        margin-left:5%;
+        width:100px;
+        height:40px;
+        background-color:var(--theme1);
+        color:var(--color);
+        border:3px solid var(--color);
+        font-size:18px;
+    }
     @media screen and (min-width: 600px)
     {
         #sign-up-container
@@ -66,6 +119,10 @@
             min-height:80vh;
             background-color:var(--theme2);
             border:3px solid var(--color);
+        }
+        input 
+        {
+            width:50%;
         }
     }
 </style>
