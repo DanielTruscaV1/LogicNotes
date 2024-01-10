@@ -141,7 +141,7 @@
         right:3vw;
         width:50px;
         height:50px;
-        background-color:var(--theme2);
+        background-color:var(--theme2) !important;
         color:var(--color);
         border:3px solid var(--color);
         border-radius:50%;

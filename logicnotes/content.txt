@@ -4,87 +4,64 @@
 Statement
 </h1>
 <p>
-Consider all the leaves of a binary tree, from left to right order, the values of those leaves form a leaf value sequence.
-</p>
-<p>
-For example, in the given tree above, the leaf value sequence is (6, 7, 4, 9, 8).
-</p>
-<p>
-Two binary trees are considered leaf-similar if their leaf value sequence is the same.
-</p>
-<p>
-Return true if and only if the two given trees with head nodes root1 and root2 are leaf-similar.
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
 </p>
 <h1>
 Example
 </h1>
 <p>
-Input: root1 = [3,5,1,6,2,9,8,null,null,7,4], root2 = [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]
+Input: n = 3
 </p>
 <p>
-Output: true
+Output: ["((()))","(()())","(())()","()(())","()()()"]
 </p>
 <h1>
 Solution
 </h1>
 <p>
-We use the preorder traversal of both trees and create the leaf value sequence array for each tree, then we check if the two arrays are identical or not and return the answer.
+We use top-down dynamic programming to generate all the possible combinations of well-formed parentheses.
 </p>
 <h1>
 Implementation
 </h1>
 <pre>
 <code>
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
 
-    vector<int> v1, v2;
+    string str = "";
 
-    void preorder1(TreeNode* current)
+    void put_paranthesis(vector<string> &result, int open, int closed)
     {
-        if(current)
+        if(open == 0 && closed == 0)
         {
-            preorder1(current->left);
-            if(!current->left && !current->right)
-                v1.push_back(current->val);
-            preorder1(current->right);
+            result.push_back(str);
+        }
+        else
+        { 
+            if(open > 0)
+            {
+                string t = str;
+                str += '(';
+                put_paranthesis(result, open-1, closed);
+                str = t;
+            }
+            if(closed > open)
+            {
+                string t = str;
+                str += ')';
+                put_paranthesis(result, open, closed-1);
+                str = t;
+            }
         }
     }
 
-    void preorder2(TreeNode* current)
-    {
-        if(current)
-        {
-            preorder2(current->left);
-            if(!current->left && !current->right)
-                v2.push_back(current->val);
-            preorder2(current->right);
-        }
-    }
-
-    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-        preorder1(root1);
-        preorder2(root2);
-
-        int n1 = v1.size();
-        int n2 = v2.size();
-        if(n1 != n2)
-            return false;
-        for(int i = 0;i < n1;i++)
-            if(v1[i] != v2[i])
-                return false;
-        return true;
+    vector<string> generateParenthesis(int n) {
+        int open = n;
+        int closed = n;
+        vector<string> result;
+        put_paranthesis(result, open, closed);
+        return result;
     }
 };
 </code>
