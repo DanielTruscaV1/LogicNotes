@@ -53,7 +53,7 @@ import router from "../router";
       <li @click="goTo('Home')">Home</li>
       <li @click="goTo('Notes')">Notes</li>
       <li>Sign-in</li>
-      <li>Sign-up</li>
+      <li @click="goTo('Sign-Up')">Sign-up</li>
       <li>Account</li>
       <li @click="goTo('Settings')">Settings</li>
     </ul>

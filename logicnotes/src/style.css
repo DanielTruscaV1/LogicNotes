@@ -5,7 +5,7 @@
   --theme3: rgb(10, 10, 10);
   --color:white;
   --color2:black;
-  --fontSize:50px;
+  --fontSize:16px;
 }
 body 
 {
@@ -35,11 +35,21 @@ pre
   font-weight:600;
   font-size:var(--fontSize);
 }
+#content img 
+{
+  width:70%;
+  height:50%;
+}
 @media screen and (min-width: 600px)
 {
   #content h1 
   {
     width:115%;
+  }
+  #content img 
+  {
+    width:40%;
+    height:30%;
   }
 }
 /* ----------------------------------------------
