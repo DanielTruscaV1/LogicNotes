@@ -301,16 +301,20 @@
         }
         ul 
         {
+            margin-bottom:30px;
             position:relative;
             top:30px;
         }
         li 
         {
+            margin-bottom:0px;
             margin-left:-10px;
             width:87vw;
         }
         .tag 
         {
+            margin-bottom:0px;
+            margin-left:15vw;
             width:78vw;
         }
         button 
