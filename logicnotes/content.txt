@@ -1,41 +1,50 @@
 `
 <section>
-<a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/">
-Source of the problem: LeetCode
+<a href="https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/description/?envType=daily-question&envId=2024-01-13">
+Problem Source: LeetCode
 </a>
 <h1>
 Statement
 </h1>
 <p>
-You are given a weighted undirected graph with 'n' nodes and a list of edges of the form (a, b, w) where 'a' represents the node a, 'b' represents the node b and 'w' represents the weight asociated with the edge from node a to b.
+You are given two strings of the same length s and t. In one step you can choose any character of t and replace it with another character.
 </p>
 <p>
-You are also given an integer 'k' which represents the distance threshold for any path in the graph.
+Return the minimum number of steps to make t an anagram of s.
 </p>
 <p>
-The task is to find the node with the least number of neighbours.
+An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
 </p>
 <p>
-Note that if there is a path from node a to node b but the weight of the path is greater than the threshold then the two nodes are not considered neightbours.
+You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
+</p>
+<h1>
+Example
+</h1>
+<p>
+Input: s = "bab", t = "aba"
 </p>
 <p>
-If there are multiple nodes that satisfy the condition then return the one with the greatest number.
+Output: 1
+</p>
+<p>
+Explanation: Replace the first 'a' in t with b, t = "bba" which is anagram of s.
 </p>
 <h1>
 Solution
 </h1>
 <p>
-We first create a matrix (2D array) that stores the minimum distance between any two nodes 'i' and 'j'.
+We use two maps for keeping track of the frequency of all characters from string 's' and from string 't'.
 </p>
 <p>
-This matrix will be created using the Warshall-Floyd algorithm in O(n^3) time complexity since if the nodes 'i' and 'k' are neighbours and if the nodes 'j' and 'k' are neighbours then the nodes 'i' and 'j' must also be neighbours.
+We then sum up all the differences between the frequency of the characters that appear in the map of string 's' and the frequency of the same characters but of the string 't'.
 </p>
 <p>
-Then we pick all nodes from 0 to n-1 and check whether or not they have the least number of neighbours by actually checking whether or not the current node is a neighbour of any of the other nodes.
-We can achive this in O(n^2) time complexity by using the minimum weight matrix that has been constructed previously.
+In other words, we check how many more times the character appears in string 's' than in string 't' and we sum up these differences.
 </p>
 <p>
-Finally we return the answer.
+</p>
+<p>
 </p>
 <h1>
 Implementation
@@ -44,40 +53,29 @@ Implementation
 <code>
 class Solution {
 public:
-    int findTheCity(int n, vector<vector<int>>& edges, int distanceThreshold) {
-        int dist[n][n];
+    int minSteps(string s, string t) {
+        unordered_map<char, int> ms, mt;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                dist[i][j] = i == j ? 0 : 10001;
-            }
-        }
-
-        for(auto edge : edges)
-            dist[edge[0]][edge[1]] = dist[edge[1]][edge[0]] = edge[2];
-
-        for (int k = 0; k < n; k++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
-                }
-            }
-        }
-        int ans = -1;
-        int minimum = INT_MAX;
-        for(int i = 0;i < n;i++)
+        for(auto i : s)
+            ms[i] = 0;
+        for(auto i : s)
+            ms[i]++;
+        
+        for(auto i : t)
+            mt[i] = 0;
+        for(auto i : t)
+            mt[i]++;
+        
+        int sum = 0;
+        for(auto i : ms)
         {
-            int counter = 0;
-            for(int j = 0;j < n;j++)
-                if(dist[i][j] <= distanceThreshold)
-                    counter++;
-            if(counter <= minimum)
-            {
-                minimum = counter;
-                ans = i;
-            }
+            char c = i.first;
+            int f = i.second;
+            if(mt[c] <= f)
+                sum += f-mt[c];
         }
-        return ans;
+
+        return sum;
     }
 };
 </code>

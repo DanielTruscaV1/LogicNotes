@@ -10,6 +10,7 @@ import Note from "./components/Note.vue";
 
 import AppSettings from "./components/AppSettings.vue";
 import AppSignUp from "./components/AppSignUp.vue";
+import AppSignIn from "./components/AppSignIn.vue";
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     name: "Sign-Up",
     component:AppSignUp,
   },
+  {
+    path:"/signin",
+    name:"Sign-In",
+    component:AppSignIn,
+  }
 ];
 
 const router = createRouter({
