@@ -47,7 +47,7 @@
                     Terms and Conditions
                 </h1>
                 <p>
-                    By signing up for an account on LogicNotes, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you may not use our services.
+                    By using the LogicNotes website, you agree to be bound by our Terms and Conditions. If you do not agree with any part of these terms, you may not use our service.
                 </p>
             </section>
             <div>
