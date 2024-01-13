@@ -1,50 +1,43 @@
 `
 <section>
-<a href="https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/description/?envType=daily-question&envId=2024-01-13">
+<a href="https://leetcode.com/problems/redundant-connection/description/">
 Problem Source: LeetCode
 </a>
 <h1>
 Statement
 </h1>
 <p>
-You are given two strings of the same length s and t. In one step you can choose any character of t and replace it with another character.
+In this problem, a tree is an undirected graph that is connected and has no cycles.
 </p>
 <p>
-Return the minimum number of steps to make t an anagram of s.
+You are given a graph that started as a tree with n nodes labeled from 1 to n, with one additional edge added. The added edge has two different vertices chosen from 1 to n, and was not an edge that already existed. The graph is represented as an array edges of length n where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the graph.
 </p>
 <p>
-An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
-</p>
-<p>
-You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
+Return an edge that can be removed so that the resulting graph is a tree of n nodes. If there are multiple answers, return the answer that occurs last in the input.
 </p>
 <h1>
 Example
 </h1>
+<img src="https://assets.leetcode.com/uploads/2021/05/02/reduntant1-1-graph.jpg"/>
 <p>
-Input: s = "bab", t = "aba"
+Input: edges = [[1,2],[1,3],[2,3]]
 </p>
 <p>
-Output: 1
+Output: [2,3]
+</p>
+<img src="https://assets.leetcode.com/uploads/2021/05/02/reduntant1-2-graph.jpg"/>
+
+<p>
+Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]
 </p>
 <p>
-Explanation: Replace the first 'a' in t with b, t = "bba" which is anagram of s.
+Output: [1,4]
 </p>
 <h1>
 Solution
 </h1>
 <p>
-We use two maps for keeping track of the frequency of all characters from string 's' and from string 't'.
-</p>
-<p>
-We then sum up all the differences between the frequency of the characters that appear in the map of string 's' and the frequency of the same characters but of the string 't'.
-</p>
-<p>
-In other words, we check how many more times the character appears in string 's' than in string 't' and we sum up these differences.
-</p>
-<p>
-</p>
-<p>
+We use the Disjoint Set Union algorithm for keeping track of the parent (representative node) of every connected component.
 </p>
 <h1>
 Implementation
@@ -53,29 +46,50 @@ Implementation
 <code>
 class Solution {
 public:
-    int minSteps(string s, string t) {
-        unordered_map<char, int> ms, mt;
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        int n = edges.size();
+        vector<int> parent(n+1), card(n+1);
 
-        for(auto i : s)
-            ms[i] = 0;
-        for(auto i : s)
-            ms[i]++;
-        
-        for(auto i : t)
-            mt[i] = 0;
-        for(auto i : t)
-            mt[i]++;
-        
-        int sum = 0;
-        for(auto i : ms)
+        for(int i = 1;i <= n;i++)
         {
-            char c = i.first;
-            int f = i.second;
-            if(mt[c] <= f)
-                sum += f-mt[c];
+            parent[i] = i;
+            card[i] = 1;
         }
 
-        return sum;
+        for(auto edge : edges)
+        {
+            int a = edge[0];
+            int b = edge[1];
+
+            int pa = find_parent(a, parent);
+            int pb = find_parent(b, parent);
+
+            if(pa == pb)
+                return edge;
+
+            if(card[pa] >= card[pb])
+            {
+                parent[pb] = parent[pa];
+                card[pa] += card[pb];
+                card[pb] = 0;
+            }
+            else 
+            {
+                parent[pa] = parent[pb];
+                card[pb] += card[pa];
+                card[pa] = 0;
+            }
+        }
+
+        vector<int> ans;
+        return ans;
+    }
+
+    int find_parent(int x, vector<int> parent)
+    {
+        if(parent[x] != x)
+            return find_parent(parent[x], parent);
+        return x;
     }
 };
 </code>

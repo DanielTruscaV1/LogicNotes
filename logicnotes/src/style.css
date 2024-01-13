@@ -32,7 +32,7 @@ pre
 }
 #content p 
 {
-  font-weight:600;
+  font-weight:400;
   font-size:var(--fontSize);
 }
 #content img 
