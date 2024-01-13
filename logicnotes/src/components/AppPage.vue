@@ -153,6 +153,7 @@
       }
       section 
       {
+        margin-left:0px;
         position:absolute;
         width:20vw;
         height:30vh;
@@ -162,12 +163,12 @@
       #section1 
       {
         top:2.5vh;
-        left:2.5vw;
+        left:2vw;
       }
       #section2 
       {
         top:calc(30vh + 7.5vh);
-        left:2.5vw;
+        left:2vw;
       }
       #section3 
       {
