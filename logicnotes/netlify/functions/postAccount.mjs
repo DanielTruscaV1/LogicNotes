@@ -2,6 +2,22 @@ import faunadb from 'faunadb';
 
 const q = faunadb.query;
 
+import bcrypt from "bcryptjs";
+
+const hashPassword = async (password) => {
+  try {
+    const saltRounds = 10;
+
+    const salt = await bcrypt.genSalt(saltRounds);
+
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    return hashedPassword;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const handler = async (event, context) => {
   if (event.httpMethod === 'OPTIONS') {
     // Handle preflight request
@@ -24,10 +40,21 @@ export const handler = async (event, context) => {
 
     console.log(data);
 
+    const hashedPassword = hashPassword(data.password);
+
+    console.log(hashedPassword);
+
+    const hashedData = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: hashedPassword,
+    }
+
     const response = await client.query(
         q.Create(
             q.Collection('Accounts'),
-            { data }
+            { hashedData }
         )
     );
 

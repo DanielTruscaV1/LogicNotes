@@ -11,30 +11,51 @@
 
     async function signUp()
     {
-        try 
+        if(first_name == "")
+            alert("Please enter first name");
+        else if(last_name == "")
+            alert("Please enter last name");
+        else if(email == "")
+            alert("Please enter email");
+        else if(password == "")
+            alert("Please enter password");
+        else if(password_confirm == "")
+            alert("Please confirm password");
+        else if(password != password_confirm)
+            alert("The passwords do not match");
+        else 
         {
-            const response = await axios.post(
-                `https://logicnotes.netlify.app/.netlify/functions/postAccount`,
-                {
-                    first_name: first_name.value,
-                    last_name: last_name.value,
-                    email: email.value,
-                    password: password.value,
-                    password_confirm: password_confirm.value,
-                },
-                {
-                    headers: 
+            try 
+            {
+                const response = await axios.post(
+                    `https://logicnotes.netlify.app/.netlify/functions/postAccount`,
                     {
-                        'Content-Type': 'application/json',
+                        first_name: first_name.value,
+                        last_name: last_name.value,
+                        email: email.value,
+                        password: password.value,
+                        password_confirm: password_confirm.value,
                     },
-                },
-            )
+                    {
+                        headers: 
+                        {
+                            'Content-Type': 'application/json',
+                        },
+                    },
+                )
 
-            console.log("Sign-Up successful!");
-        }
-        catch(error)
-        {
-            console.log(error.message);
+                console.log("Sign-Up successful!");
+
+                first_name.value = "";
+                last_name.value = "";
+                email.value = "";
+                password.value = "";
+                password_confirm.value = "";
+            }
+            catch(error)
+            {
+                console.log(error.message);
+            }
         }
     }
 </script>
@@ -61,11 +82,11 @@
                 <p>
                     Password
                 </p>
-                <input type="passowrd" v-model="password"/>
+                <input type="password" v-model="password"/>
                 <p>
                     Confirm Passsword
                 </p>
-                <input type="passowrd" v-model="password_confirm"/>
+                <input type="password" v-model="password_confirm"/>
                 <br/>
                 <button @click="signUp">
                     Sign-Up
