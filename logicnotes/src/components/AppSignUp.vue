@@ -1,4 +1,42 @@
 <script setup>
+    import { ref } from 'vue';
+
+    const first_name = ref("");
+    const last_name = ref("");
+    const email = ref("");
+    const password = ref("");
+    const password_confirm = ref("");
+
+    import axios from "axios";
+
+    async function signUp()
+    {
+        try 
+        {
+            const response = await axios.post(
+                `https://logicnotes.netlify.app/.netlify/functions/postAccount`,
+                {
+                    first_name: first_name.value,
+                    last_name: last_name.value,
+                    email: email.value,
+                    password: password.value,
+                    password_confirm: password_confirm.value,
+                },
+                {
+                    headers: 
+                    {
+                        'Content-Type': 'application/json',
+                    },
+                },
+            )
+
+            console.log("Sign-Up successful!");
+        }
+        catch(error)
+        {
+            console.log(error.message);
+        }
+    }
 </script>
 
 <template>
@@ -11,27 +49,32 @@
                 <p>
                     First Name
                 </p>
-                <input type="text"/>
+                <input type="text" v-model="first_name"/>
                 <p>
                     Last Name
                 </p>
-                <input type="text"/>
+                <input type="text" v-model="last_name"/>
                 <p>
                     Email
                 </p>
-                <input type="text"/>
+                <input type="text" v-model="email"/>
                 <p>
                     Password
                 </p>
-                <input type="text"/>
+                <input type="text" v-model="password"/>
                 <p>
                     Confirm Passsword
                 </p>
-                <input type="text"/>
+                <input type="text" v-model="password_confirm"/>
                 <br/>
-                <button>
+                <button @click="signUp">
                     Sign-Up
                 </button>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </section>
             <div>
             </div>
