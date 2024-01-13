@@ -36,27 +36,27 @@ export const handler = async (event, context) => {
         secret: process.env.VITE_FAUNADB_KEY,
       });
 
-    const data = JSON.parse(event.body);
+    const unhashed_data = JSON.parse(event.body);
 
-    console.log(data);
+    console.log(unhashed_data);
 
-    const hashedPassword = await hashPassword(data.password);
+    const hashedPassword = await hashPassword(unhashed_data.password);
 
     console.log(hashedPassword);
 
-    const hashedData = {
+    const data = {
       first_name: data.first_name,
       last_name: data.last_name,
       email: data.email,
       password: hashedPassword,
     }
 
-    console.log(hashedData);
+    console.log(data);
 
     const response = await client.query(
         q.Create(
             q.Collection('Accounts'),
-            hashedData
+            {data}
         )
     );
 
