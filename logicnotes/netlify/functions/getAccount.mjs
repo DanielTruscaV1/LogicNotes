@@ -4,6 +4,15 @@ const q = faunadb.query;
 
 import bcrypt from "bcryptjs";
 
+const verifyPassword = async (plainPassword, hashedPassword) => {
+  try {
+    const passwordMatch = await bcrypt.compare(plainPassword, hashedPassword);
+    return passwordMatch;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const handler = async (event, context) => {
   if (event.httpMethod === 'OPTIONS') {
     // Handle preflight request
@@ -22,13 +31,48 @@ export const handler = async (event, context) => {
         secret: process.env.VITE_FAUNADB_KEY,
       });
 
-    const { email } = JSON.parse(event.body);
+    const { email, password } = JSON.parse(event.body);
 
     console.log(email);
 
     const response = await client.query(
         q.Get(q.Match(q.Index('getAccount'), email))
     );
+
+    const account_data = response.data.data;
+    const hashed_password = account_data.password;
+
+    console.log(password);
+    console.log(hashed_password);
+
+    const match = await verifyPassword(password, hashed_password);
+
+    if(match)
+    {
+      return {
+        statusCode: 200,
+        body: JSON.stringify(response.data),
+        headers: {
+          /* Required for CORS support to work */
+          'Access-Control-Allow-Origin': '*',
+          /* Required for cookies, authorization headers with HTTPS */
+          'Access-Control-Allow-Credentials': true
+        },
+      }
+    }
+    else 
+    {
+      return {
+        statusCode: 200,
+        body: "Sign-in failed.",
+        headers: {
+          /* Required for CORS support to work */
+          'Access-Control-Allow-Origin': '*',
+          /* Required for cookies, authorization headers with HTTPS */
+          'Access-Control-Allow-Credentials': true
+        },
+      }
+    }
 
     return {
       statusCode: 200,

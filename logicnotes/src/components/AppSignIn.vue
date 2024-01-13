@@ -4,6 +4,8 @@ import {ref} from "vue";
 const email = ref("");
 const password = ref("");
 
+import axios from "axios";
+
 async function signIn()
 {
     if(email.value == "")
@@ -17,6 +19,7 @@ async function signIn()
                     `https://logicnotes.netlify.app/.netlify/functions/getAccount`,
                     {
                         email: email.value,
+                        password: password.value,
                     },
                     {
                         headers: 
