@@ -40,7 +40,7 @@ export const handler = async (event, context) => {
 
     console.log(data);
 
-    const hashedPassword = hashPassword(data.password);
+    const hashedPassword = await hashPassword(data.password);
 
     console.log(hashedPassword);
 

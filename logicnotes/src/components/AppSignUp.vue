@@ -11,17 +11,17 @@
 
     async function signUp()
     {
-        if(first_name == "")
+        if(first_name.value == "")
             alert("Please enter first name");
-        else if(last_name == "")
+        else if(last_name.value == "")
             alert("Please enter last name");
-        else if(email == "")
+        else if(email.value == "")
             alert("Please enter email");
-        else if(password == "")
+        else if(password.value == "")
             alert("Please enter password");
-        else if(password_confirm == "")
+        else if(password_confirm.value == "")
             alert("Please confirm password");
-        else if(password != password_confirm)
+        else if(password.value != password_confirm.value)
             alert("The passwords do not match");
         else 
         {
