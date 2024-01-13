@@ -45,9 +45,9 @@ export const handler = async (event, context) => {
     console.log(hashedPassword);
 
     const data = {
-      first_name: data.first_name,
-      last_name: data.last_name,
-      email: data.email,
+      first_name: unhashed_data.first_name,
+      last_name: unhashed_data.last_name,
+      email: unhashed_data.email,
       password: hashedPassword,
     }
 
