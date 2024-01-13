@@ -39,7 +39,10 @@ export const handler = async (event, context) => {
         q.Get(q.Match(q.Index('getAccount'), email))
     );
 
-    const account_data = response.data.data;
+    const account_data = response.data;
+
+    console.log(account_data); 
+    
     const hashed_password = account_data.password;
 
     console.log(password);
