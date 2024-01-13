@@ -1,4 +1,40 @@
 <script setup>
+import {ref} from "vue";
+
+const email = ref("");
+const password = ref("");
+
+async function signIn()
+{
+    if(email.value == "")
+        alert("Please enter email");
+    else if(password.value == "")
+        alert("Please enter password");
+    else 
+    {
+        try {
+            const response = await axios.post(
+                    `https://logicnotes.netlify.app/.netlify/functions/getAccount`,
+                    {
+                        email: email.value,
+                    },
+                    {
+                        headers: 
+                        {
+                            'Content-Type': 'application/json',
+                        },
+                    },
+                )
+
+            console.log(response);
+        }
+        catch(error)
+        {
+            console.log(error.message);
+        }
+    }
+}
+
 </script>
 
 <template>
@@ -11,13 +47,13 @@
                 <p>
                     Email
                 </p>
-                <input type="text"/>
+                <input type="text" v-model="email"/>
                 <p>
                     Password
                 </p>
-                <input type="text"/>
+                <input type="password" v-model="password"/>
                 <br/>
-                <button>
+                <button @click="signIn">
                     Sign-In
                 </button>
             </section>
