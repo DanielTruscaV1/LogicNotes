@@ -61,11 +61,11 @@
                 <p>
                     Password
                 </p>
-                <input type="text" v-model="password"/>
+                <input type="passowrd" v-model="password"/>
                 <p>
                     Confirm Passsword
                 </p>
-                <input type="text" v-model="password_confirm"/>
+                <input type="passowrd" v-model="password_confirm"/>
                 <br/>
                 <button @click="signUp">
                     Sign-Up

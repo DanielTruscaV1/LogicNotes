@@ -3,12 +3,26 @@ import faunadb from 'faunadb';
 const q = faunadb.query;
 
 export const handler = async (event, context) => {
+  if (event.httpMethod === 'OPTIONS') {
+    // Handle preflight request
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*', // or your specific frontend URL
+        'Access-Control-Allow-Methods': 'OPTIONS, POST',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+      body: '',
+    };
+  }
 	try {
       const client = new faunadb.Client({
         secret: process.env.VITE_FAUNADB_KEY,
       });
 
     const data = JSON.parse(event.body);
+
+    console.log(data);
 
     const response = await client.query(
         q.Create(
