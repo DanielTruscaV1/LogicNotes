@@ -95,6 +95,7 @@
         color:var(--color);
         border:3px solid var(--color);
         font-size:18px;
+        cursor:pointer;
     }
     @media screen and (min-width: 600px)
     {
