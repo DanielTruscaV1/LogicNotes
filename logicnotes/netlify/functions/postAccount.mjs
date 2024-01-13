@@ -51,10 +51,12 @@ export const handler = async (event, context) => {
       password: hashedPassword,
     }
 
+    console.log(hashedData);
+
     const response = await client.query(
         q.Create(
             q.Collection('Accounts'),
-            { hashedData }
+            hashedData
         )
     );
 
