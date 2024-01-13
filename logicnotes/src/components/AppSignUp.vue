@@ -4,15 +4,6 @@
 <template>
     <div id="flex-container">
         <main>
-            <section id="aside1">
-                <h1>
-                    Why Sign-Up?
-                </h1>
-                <p>
-                    You can create an online profile that can be accessed by other users at any time. You can also customize the profile by adding images, providing contact information and by creating relevant posts.
-                </p>
-
-            </section>
             <section id="sign-up-container">
                 <h1>
                     Sign-Up
@@ -41,14 +32,6 @@
                 <button>
                     Sign-Up
                 </button>
-            </section>
-            <section id="aside2">
-                <h1>
-                    Terms and Conditions
-                </h1>
-                <p>
-                    By using the LogicNotes website, you agree to be bound by our Terms and Conditions. If you do not agree with any part of these terms, you may not use our service.
-                </p>
             </section>
             <div>
             </div>
@@ -137,7 +120,7 @@
     {
         #sign-up-container
         {
-            margin-left:4vw;
+            margin-left:25vw;
             position:relative;
             top:10vh;
             left:0px;
