@@ -8,27 +8,6 @@ import router from "../router";
 
   let navigationListDisplay = ref("none");
 
-  async function toggleNavigation()
-  {
-    if(navigationListDisplay.value == "none")
-    {
-      navigationListDisplay.value = "block";
-
-      let element = document.getElementsByTagName("ul")[0];
-      element.classList.add("slide-in-top");
-      await sleep(750);
-      element.classList.remove("slide-in-top");
-    }
-    else 
-    {
-      let element = document.getElementsByTagName("ul")[0];
-      element.classList.add("slide-in-bottom");
-      await sleep(750);
-      element.classList.remove("slide-in-bottom");
-      navigationListDisplay.value = "none";
-    }
-  }
-
   import { useRouter } from 'vue-router';
 
   const router1 = useRouter();
@@ -40,23 +19,127 @@ import router from "../router";
     });
   }
 
+  const showNavigation = ref(false);
+
+  function toggleNavigation()
+  {
+    //Target elements
+    let navigation_container = document.getElementById("navigation-container");
+    let navigation_button = document.getElementById("navigation-button");
+
+    //Change style
+    if(showNavigation.value == false)
+    {
+      navigation_container.style.display = "block";
+      navigation_button.innerHTML = "close";
+    }
+    else if(showNavigation.value == true)
+    {
+      navigation_container.style.display = "none";
+      navigation_button.innerHTML = "menu";
+    }
+
+    //Toggle variable
+    showNavigation.value = !showNavigation.value;
+  }
+
+  const showLegalNotes = ref(false);
+
+  function toggleLegalNotes()
+  {
+    //Target elements
+    let legal_notes_container = document.getElementById("legal-notes-container");
+    let legal_notes_button = document.getElementById("legal-notes-button");
+
+    //Change style
+    if(showLegalNotes.value == false)
+    {
+     legal_notes_container.style.display = "block";
+     legal_notes_button.innerHTML = "close";
+    }
+    else if(showLegalNotes.value == true)
+    {
+     legal_notes_container.style.display = "none";
+     legal_notes_button.innerHTML = "book";
+    }
+
+    //Toggle variable
+    showLegalNotes.value = !showLegalNotes.value;
+  }
 </script>
 
 <template>
   <nav>
-    <h1 @click="toggleNavigation">
-       Navigation 
-    </h1>
-    <ul 
-      :style="{display: navigationListDisplay}"
+    <button 
+      id="navigation-button-container"
+      @click="toggleNavigation"
     >
-      <li @click="goTo('Home')">Home</li>
-      <li @click="goTo('Notes')">Notes</li>
-      <li @click="goTo('Sign-In')">Sign-in</li>
-      <li @click="goTo('Sign-Up')">Sign-up</li>
-      <li>Account</li>
-      <li @click="goTo('Settings')">Settings</li>
-    </ul>
+      <i id="navigation-button" class="material-icons" style="font-size:50px">menu</i>
+    </button>
+    <button 
+      id="legal-notes-button-container"
+      @click="toggleLegalNotes"
+    >
+    <i id="legal-notes-button" class="material-icons" style="font-size:50px">book</i>
+    </button>
+    <section id="navigation-container">
+      <section id="menu-container">
+        <section class="destination-container" @click="goTo('Home')">
+          <p>
+             Home
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Sign-In')">
+          <p>
+            Sign-in
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Sign-Up')">
+          <p>
+            Sign-up
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Account')">
+          <p>
+            Account
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Profile')" >
+          <p>
+            Profile
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Settings')">
+          <p>
+            Settings
+          </p>
+        </section>
+      </section>
+    </section>
+    <section id="legal-notes-container">
+      <section id="list-container">
+        <section class="destination-container" @click="goTo('Home')">
+          <p>
+             Copyright
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Sign-In')">
+          <p>
+            Conditions
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Sign-Up')">
+          <p>
+            Privacy
+          </p>
+        </section>
+        <section class="destination-container" @click="goTo('Account')">
+          <p>
+            Help
+          </p>
+        </section>
+      </section>
+    </section>
   </nav>
 </template>
 
@@ -66,80 +149,161 @@ import router from "../router";
       position:relative;
       left:0px;
       width:100vw;
-      height:7.5vh;
+      height:70px;
       background-color:var(--theme2);
       color:var(--color);
       font-family: 'Montserrat', sans-serif;
-      border-top:3px solid var(--color);
-      border-bottom:3px solid var(--color);
     }
-    h1 
+    #navigation-button-container
     {
-      position:relative;
-      margin:0px;
-      padding-top:10px;
-      text-align:center;
-      font-size:20px;
-      z-index:3;
+      position:absolute;
+      top:10px;
+      left:10px;
+      padding:0px;
+      background-color:transparent;
+      color:var(--color);
+      border:none;
+      cursor:pointer;
     }
-    ul 
+    #legal-notes-button-container
+    {
+      position:absolute;
+      top:10px;
+      right:10px;
+      padding:0px;
+      background-color:transparent;
+      color:var(--color);
+      border:none;
+      cursor:pointer;
+    }
+    #navigation-container, #legal-notes-container
     {
       display:none;
-      position:relative;
-      top:0px;
-      margin:0px;
-      padding:0px;
-      height:50vh;
-      z-index:2;
+      position:absolute;
+      top:70px;
+      width:100vw;
+      height:calc(100vh - 70px);
+      background-color:rgba(30, 30, 30, 0.8);
+      z-index:5;
     }
-    li 
+    #menu-container #list-container
     {
-      position:relative;
-      margin-left:0px;
-      padding-top:20px;
-      height:50px;
-      list-style-type:none;
-      text-align:center;
-      font-size:20px;
+      position:absolute;
+      top:0px;
+      width:100vw;
+      height:calc(100vh - 70px);
       background-color:var(--theme2);
-      color:var(--color);
+      z-index:5;
     }
+    .destination-container 
+    {
+      display:block;
+      margin-top:20px;
+      margin-left:5vw;
+      width:90vw;
+      height:50px;
+      background-color:var(--theme1);
+      color:var(--color);
+      cursor:pointer;
+    }
+    .destination-container p 
+    {
+      padding-top:10px;
+      font-size:20px;
+      text-align:center;
+    }
+
     @media screen and (min-width: 600px)
     {
       nav 
       {
-        height:7.5vh;
+        height:70px;
       }
-      h1 
+      #navigation-button-container
       {
-        display:inline-block;
-        left:30px;
-        margin-right:85px;
-        text-align:left;
-      }
-      ul 
-      {
-        position:relative;
-        top:0px;
-        display:inline-block !important;
-        height:100%;
-      }
-      li 
-      {
-        position:relative;
-        top:0px;
-        padding-top:2vh;
-        padding-bottom:3vh;
-        display:inline-block;
-        width:220px;
-        height:2vh;
-        cursor:pointer;
+        position:absolute;
+        top:10px;
+        left:0px;
+        width:70px;
+        padding:0px;
         background-color:transparent;
+        color:var(--color);
+        border:none;
+        cursor:pointer;
       }
-      li:hover 
+      #legal-notes-button-container
       {
+        position:absolute;
+        top:10px;
+        right:20px;
+        width:70px;
+        padding:0px;
+        background-color:transparent;
+        color:var(--color);
+        border:none;
+        cursor:pointer;
+      }
+      #navigation-container
+      {
+        display:none;
+        position:absolute;
+        top:70px;
+        width:100vw;
+        height:calc(100vh - 70px);
+        background-color:rgba(30, 30, 30, 0.8);
+        z-index:5;
+      }
+      #legal-notes-container
+      {
+        display:none;
+        position:absolute;
+        top:70px;
+        width:100vw;
+        height:calc(100vh - 70px);
+        background-color:rgba(30, 30, 30, 0.8);
+        z-index:5;
+      }
+      #menu-container 
+      {
+        position:absolute;
+        top:0px;
+        right:calc(100vw - 12vw);
+        width:13vw;
+        height:calc(100vh - 70px);
+        background-color:var(--theme2);
+        z-index:5;
+      }
+      #list-container 
+      {
+        position:absolute;
+        top:0px;
+        left:calc(100vw - 14vw);
+        width:13vw;
+        height:calc(100vh - 70px);
+        background-color:var(--theme2);
+        z-index:5;
+      }
+      .destination-container 
+      {
+        display:inline-block;
+        margin-top:20px;
+        margin-left:1.65vw;
+        width:10vw;
+        height:100px;
         background-color:var(--theme1);
         color:var(--color);
+        cursor:pointer;
+      }
+      .destination-container:hover 
+      {
+        background-color:var(--color);
+        color:var(--theme1);
+      }
+      .destination-container p 
+      {
+        margin-top:30px;
+        font-size:20px;
+        text-align:center;
       }
     }
 </style>

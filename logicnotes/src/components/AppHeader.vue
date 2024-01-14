@@ -33,9 +33,6 @@ onUnmounted(() => {
 
 <template>
   <header>
-    <h1>
-      LogicNotes
-    </h1>
   </header>
   <i class="material-icons" style="font-size:50px">access_time</i>
   <p>
@@ -101,6 +98,13 @@ onUnmounted(() => {
     }
     @media screen and (min-width: 600px)
     {
+      img
+      {
+        position:absolute;
+        left:1vw;
+        width:7.5vw;
+        height:10vh;
+      }
       h1 
       {
         left:30px;

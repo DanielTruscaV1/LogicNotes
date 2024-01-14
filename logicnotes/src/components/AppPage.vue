@@ -11,57 +11,13 @@
 
 <template>
   <main>
-    <h1>
-      Welcome to the LogicNotes project!
+    <h1 id="title">
+      LogicNotes
     </h1>
-    <img src="../assets/Logo2.png"/>
-    <button @click="notesRedirect">
-      See my notes
-    </button>
-    <section id="section1">
-      <h1>
-        Conditions
-      </h1>
-      <p>
-        By using the LogicNotes website, you agree to be bound by our Terms and Conditions. If you do not agree with any part of these terms, you may not use our service.
-      </p>
-      <button>
-        Read
-      </button>
-    </section>
-    <section id="section2">
-      <h1>
-        Copyright
-      </h1>
-      <p>
-        All content on this website, including text, graphics, logos, images, audio clips, digital downloads, and data compilations, is the property of LogicNotes and is protected by international copyright laws.
-      </p>
-      <button>
-        Read
-      </button>
-    </section>
-    <section id="section3">
-      <h1>
-        Privacy
-      </h1>
-      <p>
-        LogicNotes is committed to protecting the privacy of our users. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you visit our website or use our services.
-      </p>
-      <button>
-        Read
-      </button>
-    </section>
-    <section id="section4">
-      <h1>
-        Help
-      </h1>
-      <p>
-        At LogicNotes, we are committed to providing you with a seamless and enjoyable experience. Whether you're a new user or a seasoned pro, our Help resources are here to support you.
-      </p>
-      <button>
-        Read
-      </button>
-    </section>
+    <h1 id="subtitle1">
+      Discover the world of technology.
+    </h1>
+    <img src="../assets/logo3.svg"/>
   </main>
 </template>
 
@@ -70,7 +26,7 @@
     {
         position:relative;
         width:100vw;
-        min-height:81vh;
+        height:calc(100vh - 70px);
         background-color:var(--theme1);
         color:var(--color);
         font-family: 'Montserrat', sans-serif;
@@ -131,16 +87,43 @@
         border-radius:0px;
         cursor:pointer;
     }
+    #title 
+    {
+      font-size:50px;
+    }
+    #subtitle 
+    {
+      font-size:20px;
+    }
     @media screen and (min-width: 600px)
     {
-      img
+      #title
       {
-        left:40vw;
-        width:20vw;
-        height:200px;
+        position:absolute;
+        top:5vh;
+        left:5vw;
+        padding:0px;
+        font-size:100px;
+      }
+      #subtitle1
+      {
+        position:absolute;
+        top:20vh;
+        left:5vw;
+        padding:0px;
+        font-size:40px;
+      }
+      img 
+      {
+        position:absolute;
+        top:5vh;
+        left:30vw;
+        width:80vw;
+        height:calc(100vh - 30vh);
       }
       button 
       {
+        display:none;
         margin-top:30vh;
         left:45vw;
         width:10vw;
@@ -162,21 +145,25 @@
       }
       #section1 
       {
+        display:none;
         top:2.5vh;
         left:2vw;
       }
       #section2 
       {
+        display:none;
         top:calc(30vh + 7.5vh);
         left:2vw;
       }
       #section3 
       {
+        display:none;
         top:2.5vh;
         right:2.5vw;
       }
       #section4 
       {
+        display:none;
         top:calc(30vh + 7.5vh);
         right:2.5vw;
       }

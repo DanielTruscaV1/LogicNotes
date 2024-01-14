@@ -6,7 +6,6 @@
 
 <template>
   <div>
-    <AppHeader/>
     <AppNavigation/>
     <router-view></router-view>
     <AppFooter/>
