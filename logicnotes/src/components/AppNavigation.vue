@@ -89,6 +89,11 @@ import router from "../router";
              Home
           </p>
         </section>
+        <section class="destination-container" @click="goTo('Notes')">
+          <p>
+             Notes
+          </p>
+        </section>
         <section class="destination-container" @click="goTo('Sign-In')">
           <p>
             Sign-in
