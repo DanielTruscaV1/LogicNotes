@@ -97,8 +97,8 @@
         margin-bottom:30px;
         background-color:var(--theme2);
         color:var(--color);
-        border:3px solid var(--color);
-        border-radius:30px;
+        border:none;
+        border-radius:0px;
         cursor:pointer;
         z-index:2;
     }
@@ -124,7 +124,7 @@
         margin-bottom:30px;
         width:90%;
         height:35vh;
-        border-radius:30px;
+        border-radius:0px;
         z-index:3;
     }
     #search-container 
@@ -143,7 +143,7 @@
         background-color:var(--theme2);
         color:var(--color);
         font-size:20px;
-        border:3px solid var(--color);
+        border:none;
         border-radius:20px;
     }
     #search-container button 
@@ -191,7 +191,7 @@
             background-color:var(--theme2);
             color:var(--color);
             font-size:20px;
-            border:3px solid var(--color);
+            border:none;
             border-radius:20px;
         }
       #search-container button 

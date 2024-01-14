@@ -147,17 +147,17 @@
         right:3vw;
         width:50px;
         height:50px;
-        background-color:var(--theme2) !important;
+        background-color:var(--theme2);
         color:var(--color);
-        border:3px solid var(--color);
-        border-radius:50%;
+        border:none;
+        border-radius:0px;
         z-index:5;
         cursor:pointer;
     }
     button:hover 
     {
-        background-color: var(--color1);
-        color:var(--color);
+        background-color:var(--color);
+        color:var(--color2);
     }
     ul 
     {
@@ -179,15 +179,11 @@
         font-size:14px;
         cursor:pointer;
         background-color:var(--theme2);
-        border-left:15px solid var(--color);
-        border-top:3px solid var(--color);
-        border-bottom:3px solid var(--color);
-        border-right:3px solid var(--color);
     }
     li:hover 
     {
-        background-color:var(--color1);
-        color:var(--color);
+        background-color:var(--color);
+        color:var(--color2);
     }
    #note-container 
    {
@@ -206,8 +202,8 @@
         left:20vw;
         width:60vw;
         background-color:var(--theme2);
-        border:3px solid var(--color);
-        border-radius:30px;
+        border:none;
+        border-radius:0px;
    }
    h1 
    {
@@ -234,7 +230,7 @@
         left:5%;
         width:40%;
         height:250px;
-        border-radius:30px;
+        border-radius:0px;
     }
     #content 
     {
@@ -253,10 +249,6 @@
         height:20px;
         margin-bottom:20px;
         background-color:var(--theme2);
-        border-right:15px solid var(--color);
-        border-top:3px solid var(--color);
-        border-bottom:3px solid var(--color);
-        border-left:3px solid var(--color);
         line-height:1;
         font-size:16px !important;
         font-weight:800;
@@ -272,8 +264,8 @@
     .tag:hover 
     {
         cursor:pointer;
-        background-color:var(--color1);
-        color:var(--color);
+        background-color:var(--color);
+        color:var(--color2);
     }
     #jump-to 
     {
