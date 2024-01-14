@@ -108,7 +108,7 @@ import router from "../router";
     {
       nav 
       {
-        height:10vh;
+        height:7.5vh;
       }
       h1 
       {
@@ -128,11 +128,11 @@ import router from "../router";
       {
         position:relative;
         top:0px;
-        padding-top:3vh;
+        padding-top:2vh;
         padding-bottom:3vh;
         display:inline-block;
         width:220px;
-        height:4vh;
+        height:2vh;
         cursor:pointer;
         background-color:transparent;
       }

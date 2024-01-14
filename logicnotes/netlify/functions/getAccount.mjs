@@ -66,7 +66,7 @@ export const handler = async (event, context) => {
     else 
     {
       return {
-        statusCode: 200,
+        statusCode: 401,
         body: "Sign-in failed.",
         headers: {
           /* Required for CORS support to work */

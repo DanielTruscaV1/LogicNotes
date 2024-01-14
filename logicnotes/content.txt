@@ -1,43 +1,59 @@
 `
 <section>
-<a href="https://leetcode.com/problems/redundant-connection/description/">
+<a href="https://leetcode.com/problems/determine-if-two-strings-are-close/description/?envType=daily-question&envId=2024-01-14">
 Problem Source: LeetCode
 </a>
 <h1>
 Statement
 </h1>
 <p>
-In this problem, a tree is an undirected graph that is connected and has no cycles.
+Two strings are considered close if you can attain one from the other using the following operations:
 </p>
 <p>
-You are given a graph that started as a tree with n nodes labeled from 1 to n, with one additional edge added. The added edge has two different vertices chosen from 1 to n, and was not an edge that already existed. The graph is represented as an array edges of length n where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the graph.
+Operation 1: Swap any two existing characters.
+For example, abcde -> aecdb
 </p>
 <p>
-Return an edge that can be removed so that the resulting graph is a tree of n nodes. If there are multiple answers, return the answer that occurs last in the input.
+Operation 2: Transform every occurrence of one existing character into another existing character, and do the same with the other character.
+For example, aacabb -> bbcbaa (all a's turn into b's, and all b's turn into a's)
+</p>
+<p>
+You can use the operations on either string as many times as necessary.
+</p>
+<p>
+Given two strings, word1 and word2, return true if word1 and word2 are close, and false otherwise.
 </p>
 <h1>
 Example
 </h1>
-<img src="https://assets.leetcode.com/uploads/2021/05/02/reduntant1-1-graph.jpg"/>
 <p>
-Input: edges = [[1,2],[1,3],[2,3]]
+Input: word1 = "abc", word2 = "bca"
 </p>
 <p>
-Output: [2,3]
-</p>
-<img src="https://assets.leetcode.com/uploads/2021/05/02/reduntant1-2-graph.jpg"/>
-
-<p>
-Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]
+Output: true
 </p>
 <p>
-Output: [1,4]
+Explanation: You can attain word2 from word1 in 2 operations.
+Apply Operation 1: "abc" -> "acb"
+Apply Operation 1: "acb" -> "bca"
+</p>
+<p>
+Input: word1 = "a", word2 = "aa"
+</p>
+<p>
+Output: false
+</p>
+<p>
+Explanation: It is impossible to attain word2 from word1, or vice versa, in any number of operations.
 </p>
 <h1>
 Solution
 </h1>
 <p>
-We use the Disjoint Set Union algorithm for keeping track of the parent (representative node) of every connected component.
+We use a map to keep track of whether or not a character is present in the first string and one to keep track of the frequency of the character. We do this for the second string as well.
+</p>
+<p>
+We can then check if the same characters appear in both strings and also check if by swapping the frequencies we can get an identical string. We can achive this using a set for the frequency of each string and by comparing the two sets.
 </p>
 <h1>
 Implementation
@@ -46,50 +62,26 @@ Implementation
 <code>
 class Solution {
 public:
-    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
-        int n = edges.size();
-        vector<int> parent(n+1), card(n+1);
-
-        for(int i = 1;i <= n;i++)
+    bool closeStrings(string word1, string word2) {
+        unordered_map<char, int> m1, m2, m1_2, m2_2;
+        for(auto i : word1)
         {
-            parent[i] = i;
-            card[i] = 1;
+            m1[i]++;
+            m1_2[i] = 1;
         }
-
-        for(auto edge : edges)
+        for(auto i : word2)
         {
-            int a = edge[0];
-            int b = edge[1];
-
-            int pa = find_parent(a, parent);
-            int pb = find_parent(b, parent);
-
-            if(pa == pb)
-                return edge;
-
-            if(card[pa] >= card[pb])
-            {
-                parent[pb] = parent[pa];
-                card[pa] += card[pb];
-                card[pb] = 0;
-            }
-            else 
-            {
-                parent[pa] = parent[pb];
-                card[pb] += card[pa];
-                card[pa] = 0;
-            }
+            m2[i]++;
+            m2_2[i] = 1;
         }
-
-        vector<int> ans;
-        return ans;
-    }
-
-    int find_parent(int x, vector<int> parent)
-    {
-        if(parent[x] != x)
-            return find_parent(parent[x], parent);
-        return x;
+        if(m1_2 != m2_2)
+            return false;
+        multiset<int> s1, s2;
+        for(auto [c, f] : m1)
+            s1.insert(f);
+        for(auto [c, f] : m2)
+            s2.insert(f);
+        return s1 == s2;
     }
 };
 </code>
