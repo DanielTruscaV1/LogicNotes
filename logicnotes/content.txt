@@ -1,59 +1,32 @@
 `
 <section>
-<a href="https://leetcode.com/problems/determine-if-two-strings-are-close/description/?envType=daily-question&envId=2024-01-14">
+<a href="https://leetcode.com/problems/network-delay-time/description/">
 Problem Source: LeetCode
 </a>
 <h1>
 Statement
 </h1>
 <p>
-Two strings are considered close if you can attain one from the other using the following operations:
+You are given a network of n nodes, labeled from 1 to n. You are also given times, a list of travel times as directed edges times[i] = (ui, vi, wi), where ui is the source node, vi is the target node, and wi is the time it takes for a signal to travel from source to target.
 </p>
 <p>
-Operation 1: Swap any two existing characters.
-For example, abcde -> aecdb
-</p>
-<p>
-Operation 2: Transform every occurrence of one existing character into another existing character, and do the same with the other character.
-For example, aacabb -> bbcbaa (all a's turn into b's, and all b's turn into a's)
-</p>
-<p>
-You can use the operations on either string as many times as necessary.
-</p>
-<p>
-Given two strings, word1 and word2, return true if word1 and word2 are close, and false otherwise.
+We will send a signal from a given node k. Return the minimum time it takes for all the n nodes to receive the signal. If it is impossible for all the n nodes to receive the signal, return -1.
 </p>
 <h1>
 Example
 </h1>
+<img src="https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png"/>
 <p>
-Input: word1 = "abc", word2 = "bca"
+Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
 </p>
 <p>
-Output: true
-</p>
-<p>
-Explanation: You can attain word2 from word1 in 2 operations.
-Apply Operation 1: "abc" -> "acb"
-Apply Operation 1: "acb" -> "bca"
-</p>
-<p>
-Input: word1 = "a", word2 = "aa"
-</p>
-<p>
-Output: false
-</p>
-<p>
-Explanation: It is impossible to attain word2 from word1, or vice versa, in any number of operations.
+Output: 2
 </p>
 <h1>
 Solution
 </h1>
 <p>
-We use a map to keep track of whether or not a character is present in the first string and one to keep track of the frequency of the character. We do this for the second string as well.
-</p>
-<p>
-We can then check if the same characters appear in both strings and also check if by swapping the frequencies we can get an identical string. We can achive this using a set for the frequency of each string and by comparing the two sets.
+We build the adjancey list of the directed graph and run a Breadth-First Search (BFS) from node K to find out the minimum cost required to traverse all nodes in the graph.
 </p>
 <h1>
 Implementation
@@ -62,26 +35,49 @@ Implementation
 <code>
 class Solution {
 public:
-    bool closeStrings(string word1, string word2) {
-        unordered_map<char, int> m1, m2, m1_2, m2_2;
-        for(auto i : word1)
+    int networkDelayTime(vector<vector<int>>& edges, int n, int k) {
+        vector<vector<pair<int, int>>> list(n+1);
+
+        //Build adjacency list
+        for(auto edge : edges)
         {
-            m1[i]++;
-            m1_2[i] = 1;
+            int a = edge[0];
+            int b = edge[1];
+            int w = edge[2];
+
+            list[a].push_back({b, w});
         }
-        for(auto i : word2)
+
+        vector<int> min_dist(n+1, INT_MAX);
+        int maximum = -1;
+        queue<int> q;
+
+        min_dist[k] = 0;
+        q.push(k);
+
+        while(!q.empty())
         {
-            m2[i]++;
-            m2_2[i] = 1;
+            int i = q.front();
+            q.pop();
+            for(auto [j, w] : list[i])
+            {
+                if(min_dist[i] + w < min_dist[j])
+                {
+                    min_dist[j] = min_dist[i] + w;
+                    q.push(j);
+                }
+            }
         }
-        if(m1_2 != m2_2)
-            return false;
-        multiset<int> s1, s2;
-        for(auto [c, f] : m1)
-            s1.insert(f);
-        for(auto [c, f] : m2)
-            s2.insert(f);
-        return s1 == s2;
+
+
+        for(int i = 1;i <= n;i++)
+            if(min_dist[i] > maximum)
+                maximum = min_dist[i];
+
+        if(maximum == INT_MAX)
+            return -1;
+
+        return maximum;
     }
 };
 </code>

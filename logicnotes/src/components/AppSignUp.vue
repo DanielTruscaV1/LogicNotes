@@ -91,11 +91,6 @@
                 <button @click="signUp">
                     Sign-Up
                 </button>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
             </section>
             <div>
             </div>
@@ -118,11 +113,8 @@
     }
     main 
     {
-        display:flex;
-        flex-direction:row;
         justify-content:center;
         width:100vw;
-        min-height:65vh;
         background-color:var(--theme1);
         font-family: 'Montserrat', sans-serif;
     }
@@ -188,7 +180,7 @@
             position:relative;
             top:10vh;
             left:0px;
-            min-height:100vh;
+            min-height:80vh;
             width:50vw;
             background-color:var(--theme2);
             border:3px solid var(--color);
