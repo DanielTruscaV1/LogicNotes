@@ -6,6 +6,15 @@ const password = ref("");
 
 import axios from "axios";
 
+import { useRouter } from 'vue-router';
+
+const router1 = useRouter();
+
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
 async function signIn()
 {
     if(email.value == "")
@@ -29,7 +38,26 @@ async function signIn()
                     },
                 )
 
-            console.log(response);
+            const user_id = response.data.id ? response.data.id : "none";
+
+            if(response.status == 200)
+            {
+                //Store user in Vuex
+                const newUserInfo = {
+                    id: user_id,
+                    first_name: response.data.first_name,
+                    last_name: response.data.last_name,
+                    email: response.data.email,
+                };
+                store.dispatch('updateUser', newUserInfo);
+                
+                router1.push({
+                    name: "Profile",
+                    params: {
+                        id: user_id,
+                    }
+                });
+            }
         }
         catch(error)
         {

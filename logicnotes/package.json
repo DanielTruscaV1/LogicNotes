@@ -16,7 +16,8 @@
     "dompurify": "^3.0.6",
     "faunadb": "^4.8.0",
     "vue": "^3.2.36",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
