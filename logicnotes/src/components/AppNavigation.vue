@@ -12,7 +12,7 @@ import router from "../router";
 
   const router1 = useRouter();
 
-  function goTo(path)
+  async function goTo(path)
   {
     router1.push({
       name: path,
@@ -21,23 +21,29 @@ import router from "../router";
 
   const showNavigation = ref(false);
 
-  function toggleNavigation()
+  async function toggleNavigation()
   {
     //Target elements
     let navigation_container = document.getElementById("navigation-container");
     let navigation_button = document.getElementById("navigation-button");
 
+    navigation_button.classList.add("rotate-center");
+
     //Change style
     if(showNavigation.value == false)
     {
       navigation_container.style.display = "block";
+      await sleep(600);
       navigation_button.innerHTML = "close";
     }
     else if(showNavigation.value == true)
     {
       navigation_container.style.display = "none";
+      await sleep(600);
       navigation_button.innerHTML = "menu";
     }
+
+    navigation_button.classList.remove("rotate-center");
 
     //Toggle variable
     showNavigation.value = !showNavigation.value;
@@ -45,23 +51,32 @@ import router from "../router";
 
   const showLegalNotes = ref(false);
 
-  function toggleLegalNotes()
+  async function toggleLegalNotes()
   {
     //Target elements
     let legal_notes_container = document.getElementById("legal-notes-container");
     let legal_notes_button = document.getElementById("legal-notes-button");
 
+    legal_notes_button.classList.add("rotate-center");
+
+    
+
     //Change style
     if(showLegalNotes.value == false)
     {
-     legal_notes_container.style.display = "block";
-     legal_notes_button.innerHTML = "close";
+      legal_notes_container.style.display = "block";
+      await sleep(600);
+      legal_notes_button.innerHTML = "close";
     }
     else if(showLegalNotes.value == true)
     {
-     legal_notes_container.style.display = "none";
-     legal_notes_button.innerHTML = "book";
+      legal_notes_container.style.display = "none";
+      await sleep(600);
+      legal_notes_button.innerHTML = "book";
     }
+    
+
+    legal_notes_button.classList.remove("rotate-center");
 
     //Toggle variable
     showLegalNotes.value = !showLegalNotes.value;
@@ -83,7 +98,7 @@ import router from "../router";
     <i id="legal-notes-button" class="material-icons" style="font-size:50px">book</i>
     </button>
     <section id="navigation-container">
-      <section id="menu-container">
+      <section id="menu-container" class="slide-in-left">
         <section class="destination-container" @click="goTo('Home')">
           <p>
              Home
@@ -122,7 +137,7 @@ import router from "../router";
       </section>
     </section>
     <section id="legal-notes-container">
-      <section id="list-container">
+      <section id="list-container" class="slide-in-right">
         <section class="destination-container" @click="goTo('Home')">
           <p>
              Copyright

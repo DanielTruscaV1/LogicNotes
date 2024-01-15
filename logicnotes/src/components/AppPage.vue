@@ -11,10 +11,10 @@
 
 <template>
   <main>
-    <h1 id="title">
+    <h1 id="title" class="tracking-in-expand">
       LogicNotes
     </h1>
-    <h1 id="subtitle1">
+    <h1 id="subtitle1" class="tracking-in-expand">
       Discover the world of technology.
     </h1>
     <img src="../assets/logo3.svg"/>

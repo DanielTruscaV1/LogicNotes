@@ -149,8 +149,8 @@
         height:50px;
         background-color:var(--theme2);
         color:var(--color);
-        border:none;
-        border-radius:0px;
+        border:none;;
+        border-radius:50%;
         z-index:5;
         cursor:pointer;
     }
@@ -338,6 +338,7 @@
         }
         .tag
         {
+            left:10px;
             width:80vw !important;
         }
         ul 
@@ -349,7 +350,7 @@
         li 
         {
             margin-bottom:0px;
-            margin-left:-10px;
+            margin-left:0px;
             width:87vw;
         }
         .tag 
@@ -360,8 +361,12 @@
         }
         button 
         {
-            background-color:var(--color1);
+            background-color:var(--color2);
             color:var(--color);
+        }
+        #feedback 
+        {
+            bottom:13vh;
         }
     }
 </style>
