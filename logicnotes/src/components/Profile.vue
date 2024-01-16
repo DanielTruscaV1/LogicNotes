@@ -1,4 +1,8 @@
 <script setup>
+import ProfileEdit from "./ProfileEdit.vue";
+
+import {ref} from "vue";
+
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
@@ -45,6 +49,27 @@ var stats = [
     },
 ]
 
+const editMode = ref(false);
+
+function toggleEditMode()
+{
+    editMode.value = !editMode.value;
+
+    let edit_button = document.getElementById("edit_button");
+    let main = document.getElementsByTagName("main")[0];
+
+    if(editMode.value == true)
+    {
+        edit_button.style.backgroundColor = "rgb(200, 100, 100)";
+        main.style.opacity = "0.6";
+    }
+    else if(editMode.value == false)
+    {
+        edit_button.style.backgroundColor = "var(--theme1)";
+        main.style.opacity = "1";
+    }
+}
+
 </script>
 
 <template>
@@ -53,7 +78,7 @@ var stats = [
         <img src="../assets/image4.jpg"/>
         <div>
         </div>
-        <button>
+        <button id="edit_button" @click="toggleEditMode">
             Edit Profile
             <i class="material-icons" style="font-size:30px">edit</i>
         </button>
@@ -112,6 +137,11 @@ var stats = [
         </h2>
     </section>
   </main>
+    <ProfileEdit 
+        v-if="editMode"
+        :editMode="editMode"
+        @toggleEditMode="toggleEditMode"
+    />
 </template>
 
 <style scoped>
@@ -296,6 +326,7 @@ var stats = [
         display:inline-block;
         font-size:12px;
     }
+    
     @media screen and (max-width: 600px)
     {
         main 
