@@ -138,7 +138,7 @@ import router from "../router";
     </section>
     <section id="legal-notes-container">
       <section id="list-container" class="slide-in-right">
-        <section class="destination-container" @click="goTo('Home')">
+        <section class="destination-container" @click="goTo('Copyright')">
           <p>
              Copyright
           </p>

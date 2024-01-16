@@ -12,6 +12,7 @@ import AppSettings from "./components/AppSettings.vue";
 import AppSignUp from "./components/AppSignUp.vue";
 import AppSignIn from "./components/AppSignIn.vue";
 import Profile from "./components/Profile.vue";
+import Copyright from "./components/Copyright.vue";
 
 const routes = [
   {
@@ -50,6 +51,12 @@ const routes = [
     path:"/profile/:id",
     name:"Profile",
     component: Profile,
+    props:true,
+  },
+  {
+    path:"/copyright",
+    name:"Copyright",
+    component: Copyright,
     props:true,
   },
 ];
