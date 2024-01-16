@@ -7,7 +7,44 @@ const props = defineProps(['id']);
 const store = useStore();
 const user = computed(() => store.getters.getUser);
 
-//console.log("id: ", user.value.first_name);
+var stats = [
+    {
+        day: "Monday",
+        value:1,
+        margin:50,
+    },
+    {
+        day: "Tuesday",
+        value:3,
+        margin:40,
+    },
+    {
+        day: "Wednesday",
+        value:2,
+        margin:30,
+    },
+    {
+        day: "Thursday",
+        value:5,
+        margin:30,
+    },
+    {
+        day: "Friday",
+        value:4,
+        margin:40,
+    },
+    {
+        day: "Saturday",
+        value:1,
+        margin:50,
+    },
+    {
+        day: "Sunday",
+        value:2,
+        margin:40,
+    },
+]
+
 </script>
 
 <template>
@@ -59,8 +96,15 @@ const user = computed(() => store.getters.getUser);
     </section> 
     <section id="profile-stats2">
         <h2>
-            Stats
+            Stats (This Week)
         </h2>
+        <section id="chart-container">
+            <section class="bar" v-for="(bar, index) in stats" :style="{height:bar.value*20 + 'px'}">
+            </section>
+            <section class="label" v-for="(bar, index) in stats" :style="{marginLeft:bar.margin + 'px'}">
+                {{bar.day}}
+            </section>
+        </section>
     </section> 
     <section id="profile-list">
         <h2>
@@ -233,6 +277,25 @@ const user = computed(() => store.getters.getUser);
         text-align:center;
         margin-top:10px;
     }
+    .bar 
+    {
+        display:inline-block;
+        margin-top:150px;
+        margin-left:60px;
+        width:30px;
+        height:30px;
+        background-color:rgb(150, 255, 150);
+    }
+    #chart-container 
+    {
+        top:0px;
+        position:absolute;
+    }
+    .label 
+    {
+        display:inline-block;
+        font-size:12px;
+    }
     @media screen and (max-width: 600px)
     {
         main 
@@ -249,6 +312,64 @@ const user = computed(() => store.getters.getUser);
             top:0px !important;
             left:0px !important;
             width:100vw !important;
+        }
+        #profile-image 
+        {
+            height:40vh;
+        }
+        i 
+        {
+            bottom:3vh;
+        }
+        #profile-stats1
+        {
+            height:800px;
+        }
+        #level1{
+            display:block;
+            left:15vw;
+            width:70vw;
+        }
+        #level2{
+            display:block;
+            top:300px;
+            left:15vw;
+            width:70vw;
+        }
+        #actual-level1 
+        {
+            position:absolute;
+            top:7vw;
+            left:10vw;
+            width:50vw;
+            background-color:var(--theme1);
+            color:var(--color);
+        }
+        #actual-level2
+        {
+            position:absolute;
+            top:7vw;
+            left:10vw;
+            width:50vw;
+            background-color:var(--theme1);
+            color:var(--color);
+        }
+        .bar 
+        {
+            display:inline-block;
+            margin-top:0px;
+            margin-left:4vw;
+            width:10vw !important;
+            height:30px;
+            background-color:rgb(150, 255, 150);
+        }
+        .label 
+        {
+            display:inline-block !important;
+            margin-left:10px !important;
+            margin-right:18px;
+            width:20px !important;
+            font-size:10px !important;
         }
     }
 </style>
