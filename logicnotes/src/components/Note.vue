@@ -191,7 +191,7 @@
         width:100vw;
         background-color:var(--theme1);
         color:var(--color);
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Rubik', sans-serif;
    }
    #card 
    {

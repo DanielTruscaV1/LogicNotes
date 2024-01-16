@@ -172,7 +172,7 @@ import router from "../router";
       height:70px;
       background-color:var(--theme2);
       color:var(--color);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Rubik', sans-serif;
     }
     #navigation-button-container
     {

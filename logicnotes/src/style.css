@@ -29,11 +29,13 @@ pre
   padding-bottom:15px;
   border-bottom:3px solid var(--color);
   font-size:22px;
+  font-family: 'Rubik', sans-serif;
 }
 #content p 
 {
   font-weight:400;
   font-size:var(--fontSize);
+  font-family: 'Rubik', sans-serif;
 }
 #content img 
 {

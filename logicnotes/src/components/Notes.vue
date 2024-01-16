@@ -83,7 +83,7 @@
         flex-wrap: wrap;
         background-color:var(--theme1);
         color:var(--color);
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Rubik', sans-serif;
         z-index:1;
     }
     .note-preview

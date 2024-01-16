@@ -29,7 +29,7 @@
         height:calc(100vh - 70px);
         background-color:var(--theme1);
         color:var(--color);
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Rubik', sans-serif;
         z-index:1;
     }
     h1 
