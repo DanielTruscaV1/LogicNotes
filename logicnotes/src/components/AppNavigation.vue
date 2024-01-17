@@ -14,6 +14,16 @@ import router from "../router";
 
   async function goTo(path)
   {
+    if(path == 'Profile')
+    {
+      router1.push({
+        name: path,
+        params: {
+          id: "none",
+        }
+      })
+    }
+
     router1.push({
       name: path,
     });

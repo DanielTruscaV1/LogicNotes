@@ -73,7 +73,12 @@ function toggleEditMode()
 </script>
 
 <template>
-  <main>
+    <section id="error-container" v-if="user.id == undefined">
+        <h1>
+            401 Unauthorized
+        </h1>
+    </section>
+  <main v-if="user.id != undefined">
     <section id="profile-image">
         <img src="../assets/image4.jpg"/>
         <div>
@@ -151,7 +156,7 @@ function toggleEditMode()
         height:92.5vh;
         background-color:var(--theme1);
         color:var(--color);
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Rubik', sans-serif;
     }
     #profile-image
     {
@@ -326,7 +331,20 @@ function toggleEditMode()
         display:inline-block;
         font-size:12px;
     }
-    
+    #error-container 
+    {
+        width:100vw;
+        height:92.5vh;
+        background-color:var(--theme1);
+        color:var(--color);
+        font-family: 'Rubik', sans-serif;
+    }
+    #error-container h1 
+    {
+        width:100vw;
+        text-align:center;
+        font-size:100px;
+    }
     @media screen and (max-width: 600px)
     {
         main 
@@ -401,6 +419,21 @@ function toggleEditMode()
             margin-right:18px;
             width:20px !important;
             font-size:10px !important;
+        }
+        #error-container 
+        {
+            margin:0px;
+            width:100vw;
+            height:92.5vh;
+            background-color:var(--theme1);
+            color:var(--color);
+            font-family: 'Rubik', sans-serif;
+        }
+        #error-container h1 
+        {
+            width:100vw;
+            text-align:center;
+            font-size:30px;
         }
     }
 </style>
