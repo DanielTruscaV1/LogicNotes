@@ -111,7 +111,7 @@ async function signIn()
     {
         position:relative;
         width:100vw;
-        min-height:65vh;
+        min-height:92.5vh;
         background-color:var(--theme1);
     }
     #sign-up-container
