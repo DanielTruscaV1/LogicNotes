@@ -42,48 +42,47 @@
 </script>
 
 <template>
-    <section id="notes-container">
+    <main>
         <section id="search-container">
-            <p>
-                Search for a note
-            </p>
-            <input type="text"/>
-            <button>
-                <i class="material-icons" style="font-size:36px">search</i>
-            </button>
+                <p>
+                    Search for a note
+                </p>
+                <input type="text"/>
+                <button>
+                    <i class="material-icons" style="font-size:36px">search</i>
+                </button>
+            </section>
+        <section id="notes-container">
+            <section 
+                class="note-preview"
+                v-for="(note, index) in notes"
+                @click="noteRedirect(index+1)"
+            >
+                <h1>
+                    {{index}} - {{ note.data.title }}
+                </h1>
+            </section>
+            <br/>
+            <br/>
+            <br/>
         </section>
-        <section 
-            class="note-preview"
-            v-for="(note, index) in notes"
-        >
-            <h1>
-                {{ note.data.title }}
-            </h1>
-            <p>
-                Author: {{ note.data.author }}
-            </p>
-            <p>
-                Date: {{ note.data.date }}
-            </p>
-            <img @click="noteRedirect(index+1)" :src="note.data.image" :alt="note.data.image"/>
-        </section>
-        <br/>
-        <br/>
-        <br/>
-    </section>
+    </main>
 </template>
 
 <style scoped>
-    #notes-container 
+    main 
     {
-        display:inline-flex;
         width:100vw;
-        min-height: 50vh;
-        flex-direction: row;
-        flex-wrap: wrap;
+        height:92.5vh;
         background-color:var(--theme1);
         color:var(--color);
         font-family: 'Rubik', sans-serif;
+    }
+    #notes-container 
+    {
+        width:90vw;
+        height: 72vh;
+        overflow-y:scroll;
         z-index:1;
     }
     .note-preview
@@ -92,8 +91,9 @@
         display:inline-flex;
         flex-direction:column;
         left:7.5vw;
+        margin-bottom:0px !important;
         width:80vw;
-        min-height:50vh;
+        height:10vh;
         margin-bottom:30px;
         background-color:var(--theme2);
         color:var(--color);
@@ -101,6 +101,7 @@
         border-radius:0px;
         cursor:pointer;
         z-index:2;
+        font-size:16px;
     }
     h1 
     {
@@ -130,7 +131,7 @@
     #search-container 
     {
         margin-top:10px;
-        margin-bottom:10vh;
+        margin-bottom:5vh;
         width:100vw;
         height:10vh;
     }
@@ -173,14 +174,36 @@
         }
     @media screen and (min-width: 600px)
     {
+        #notes-container 
+        {
+            width:64vw;
+        }
       .note-preview
       {
-        top:30px;
+        margin-bottom:0px !important;
+        top:0px;
         left:0px;
         margin-left:2.8vw;
         margin-bottom:50px;
         display:inline-block !important;
-        width:21vw !important;
+        width:60vw !important;
+        height:6vh !important;
+      }
+      .note-preview:hover 
+      {
+        background-color:var(--color);
+        color:var(--color2);
+      }
+      .note-preview h1
+      {
+        display:inline-block !important;
+        width:auto !important;
+        padding-left:30px;
+      }
+      .note-preview p 
+      {
+        display:inline-block !important;
+        width:auto !important;
       }
       input 
         {

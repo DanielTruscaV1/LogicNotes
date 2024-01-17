@@ -168,6 +168,11 @@ import router from "../router";
             Help
           </p>
         </section>
+        <section class="destination-container" @click="goTo('Account')">
+          <p>
+            Feedback
+          </p>
+        </section>
       </section>
     </section>
   </nav>
